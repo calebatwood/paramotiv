@@ -1,0 +1,7 @@
+<h2>Cars in your garage<div class="pull-right"><%= link_to 'New Car', new_car_path, class: 'btn btn-info' %></div></h2>
+<br>
+<br>
+
+<% @cars.each do |car| %>
+  <h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style %></h4>
+<% end %>
