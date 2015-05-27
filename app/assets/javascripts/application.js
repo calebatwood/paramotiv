@@ -41,12 +41,28 @@ $(document).ready(function(){
 
   function retrieve_years(make, model) {
     $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/years?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-      var yearsArray = data.years;
+      var yearArray = data.years;
       console.log(data.years);
-      console.log('hi');
       $('car_year').empty();
-      $.each(yearsArray, function(index, value) {
-        $('#car_year').append('<option>' + value.year + '</option>');
+      $.each(yearArray, function(index, value) {
+        $('#car_year').append('<option value="' + value.year + '">' + value.year + '</option>');
+      });
+    });
+  }
+  //display car model style selection
+  $(document).on('change', '#car_year', function(){
+    var make = $('#car_make').val();
+    var model = $('#car_model').val();
+    retrieve_styles(make, model, this.value);
+  });
+
+  function retrieve_styles(make, model, year) {
+    $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/'+year+'/styles?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+      var styleArray = data.styles;
+      console.log(data.styles);
+      $('car_style').empty();
+      $.each(styleArray, function(index, value) {
+        $('#car_style').append('<option value="' + value.name + '">' + value.name + '</option>');
       });
     });
   }
