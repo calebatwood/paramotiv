@@ -1,0 +1,12 @@
+<%= form_for @car do |f| %>
+  <%= f.label :make %>
+  <%= f.select :make, [], {}, {class: 'form-control'} %>
+  <%= f.label :model %>
+  <%= f.select :model, [], {}, {class: 'form-control'} %>
+  <%= f.label :year %>
+  <%= f.select :year, [], {}, {class: 'form-control'} %>
+  <%= f.label :style %>
+  <%= f.select :style, [], {}, {class: 'form-control'} %>
+    <br>
+      <%= f.submit 'Boom', class: 'btn btn-success' %>
+<% end %>
