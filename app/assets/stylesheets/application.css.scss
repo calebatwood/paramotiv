@@ -1,6 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-image: image-url("/night_cars.jpg");
+  color: #fff;
+}
+nav {
+  opacity: 0.8;
+}
+.well {
+  background-color: #000;
+  border-color: #000;
+}
+.dealership {
+  width: 40%;
+}
 #garage {
   min-width: 100%;
+}
+#new {
+  width: 33%;
+}
+
+.initialize p {
+  color: #fff;
+  padding-top: 5px;
 }

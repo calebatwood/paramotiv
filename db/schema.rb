@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528014932) do
+ActiveRecord::Schema.define(version: 20150528171010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150528014932) do
     t.integer "year"
     t.string  "style"
     t.integer "style_id"
+    t.integer "zip"
   end
 
 end

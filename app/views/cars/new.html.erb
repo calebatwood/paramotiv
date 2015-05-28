@@ -1,13 +1,19 @@
-<%= form_for @car do |f| %>
-  <%= f.label :make %>
-  <%= f.select :make, [], {}, {class: 'form-control'} %>
-  <%= f.label :model %>
-  <%= f.select :model, [], {}, {class: 'form-control'} %>
-  <%= f.label :year %>
-  <%= f.select :year, [], {}, {class: 'form-control'} %>
-  <%= f.label :style %>
-  <%= f.select :style, [], {}, {class: 'form-control'} %>
-  <%= f.hidden_field :style_id  %>
-    <br>
-      <%= f.submit 'Boom', class: 'btn btn-success' %>
-<% end %>
+<div class="well" id="new">
+  <%= form_for @car do |f| %>
+    <div class="initialize">
+    <p><%= f.label :make %></p>
+    <%= f.select :make, [], {}, {class: 'form-control'} %>
+    <p><%= f.label :model %></p>
+    <%= f.select :model, [], {}, {class: 'form-control'} %>
+    <p><%= f.label :year %></p>
+    <%= f.select :year, [], {}, {class: 'form-control'} %>
+    <p><%= f.label :style %></p>
+    <%= f.select :style, [], {}, {class: 'form-control'} %>
+    <p><%= f.label :zip %></p>
+    <%= f.text_field :zip, {class: 'form-control'} %>
+    <%= f.hidden_field :style_id  %>
+      <br>
+        <%= f.submit 'Boom', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
