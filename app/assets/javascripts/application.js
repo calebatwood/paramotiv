@@ -85,6 +85,7 @@ $(document).ready(function(){
   function nearest_dealer(zip, make) {
     $.get('http://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       console.log(data);
+      console.log(data.dealers[0].operations.Friday);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
       var city = (data.dealers[0].address.city);
@@ -92,8 +93,15 @@ $(document).ready(function(){
       var zip = (data.dealers[0].address.zipcode);
       var phone = (data.dealers[0].contactInfo.phone);
       var site = (data.dealers[0].contactInfo.website);
+      var mon = (data.dealers[0].operations.Monday);
+      var tue = (data.dealers[0].operations.Tuesday);
+      var wed = (data.dealers[0].operations.Wednesday);
+      var thur = (data.dealers[0].operations.Thursday);
+      var fri = (data.dealers[0].operations.Friday);
+      var sat = (data.dealers[0].operations.Saturday);
+      var sund = (data.dealers[0].operations.Sunday);
       $('td.dealer').removeClass('dealer');
-      $('#dealer').append('<div class="well dealership"><h3>'+name+'</h3><h4>'+street+'</h4><h4>'+city+' ,'+state+' '+zip+'</h4><p>Phone: '+phone+'</p><a class="btn">Close</a></div>');
+      $('#dealer').append('<div class="well dealership"><a class="btn">Close</a><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div>');
       $('.dealership a').on('click', function(){
         $('.well.dealership').remove();
       });
