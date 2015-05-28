@@ -85,13 +85,6 @@ $(document).ready(function(){
   function nearest_dealer(zip, make) {
     $.get('http://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       console.log(data);
-      console.log(data.dealers[0].name);
-      console.log(data.dealers[0].address.street);
-      console.log(data.dealers[0].address.city);
-      console.log(data.dealers[0].address.stateCode);
-      console.log(data.dealers[0].address.zipcode);
-      console.log(data.dealers[0].contactInfo.phone);
-      console.log(data.dealers[0].contactInfo.website);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
       var city = (data.dealers[0].address.city);
@@ -100,10 +93,13 @@ $(document).ready(function(){
       var phone = (data.dealers[0].contactInfo.phone);
       var site = (data.dealers[0].contactInfo.website);
       $('td.dealer').removeClass('dealer');
-      $('#dealer').append('<div class="well dealership"><h3>'+name+'</h3><h4>'+street+'</h4><h4>'+city+' ,'+state+' '+zip+'</h4><p>Phone: '+phone+'</p></div>');
+      $('#dealer').append('<div class="well dealership"><h3>'+name+'</h3><h4>'+street+'</h4><h4>'+city+' ,'+state+' '+zip+'</h4><p>Phone: '+phone+'</p><a class="btn">Close</a></div>');
+      $('.dealership a').on('click', function(){
+        $('.well.dealership').remove();
+      });
     });
-
   }
+
 
 
 
