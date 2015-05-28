@@ -5,6 +5,9 @@
 
 $(document).ready(function(){
 
+  //hide trade-in form initially
+  $('#trade').css('visibility', 'hidden');
+
   //display car make selection
   $.ajax({
       type: "GET",
@@ -75,17 +78,16 @@ $(document).ready(function(){
 
   //locate nearest dealer
   $('.btn-success').on('click', function(){
-    console.log('hi');
     $(this).addClass('dealer');
     var zip = $('.dealer').attr('data');
     var make = $('.dealer').attr('value');
     nearest_dealer(zip, make);
+    $('.well.dealership').remove();
   });
 
   function nearest_dealer(zip, make) {
     $.get('http://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       console.log(data);
-      console.log(data.dealers[0].operations.Friday);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
       var city = (data.dealers[0].address.city);
@@ -108,6 +110,26 @@ $(document).ready(function(){
     });
   }
 
+  //get trade-in value
+  $('.btn-danger').on('click', function(){
+    console.log('hi');
+    $(this).addClass('trade');
+    $('#trade').css('visibility', 'visible');
+  });
+
+  $('.btn-default').on('click', function(){
+    var styleid = $('.trade').attr('value');
+    var condition = $('.condition').val();
+    var mileage = $('.mileage').val();
+    var zip = $('.trade').attr('data');
+    market_value(styleid, condition, mileage, zip);
+  });
+
+  function market_value(styleid, condition, mileage, zip) {
+    $.get('https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv?styleid='+styleid+'&condition='+condition+'&mileage='+mileage+'&zip='+zip+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+      console.log(data);
+    });
+  }
 
 
 

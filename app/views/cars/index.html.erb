@@ -11,11 +11,23 @@
           <td class='pull-right'><%= link_to 'Remove from garage', car, class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td class='btn btn-primary' id='mainentance'>Maintenance</td>
           <td class='btn btn-success' value="<%= car.make %>" data="<%= car.zip %>">Nearest Dealer</td>
-          <td class='btn btn-danger' id='trade'>Trade In</td>
+          <td class='btn btn-danger' value="<%= car.style_id %>" data="<%= car.zip %>">Trade In</td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
+<div class='well trade_form' id='trade'>
+  <select class='form-control condition'>
+    <option disabled selected>Select Condition</option>
+    <option>Outstanding</option>
+    <option>Clean</option>
+    <option>Average</option>
+    <option>Rough</option>
+    <option>Damaged</option>
+  </select>
+  <input type='text' class='form-control mileage' value='Mileage'>
+  <div class='btn btn-default'>Calculate True Market Value</div>
+</div>
 <div id='dealer'></div>

@@ -8,6 +8,9 @@ body {
 nav {
   opacity: 0.8;
 }
+.btn {
+  margin-left: 3px;
+}
 .well {
   background-color: #000;
   border-color: #000;
@@ -15,6 +18,17 @@ nav {
 .dealership {
   width: 40%;
   height: auto;
+}
+.trade_form {
+  width: 40%;
+}
+.condition {
+  width: 80%;
+}
+.mileage {
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #garage {
   min-width: 100%;
