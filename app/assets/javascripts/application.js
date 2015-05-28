@@ -72,22 +72,8 @@ $(document).ready(function(){
     console.log('hi');
     var style_id = $('#car_style :selected').prop('id');
     $('#car_style_id').val(style_id);
-    // var make = $('#car_make').val();
-    // var model = $('#car_model').val();
-    // var year = $('#car_year').val();
-  //   // retrieve_style_id(make, model, year);
   });
 
-  // function retrieve_style_id(make, model, year) {
-  //   $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/'+year+'/styles?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-  //     var styleArray = data.styles;
-  //     console.log(data.styles);
-  //     $('car_style').empty();
-  //     $.each(styleArray, function(index, value) {
-  //       $('#car_style_id').val(value.id);
-  //     });
-  //   });
-  // }
 
 
 });
