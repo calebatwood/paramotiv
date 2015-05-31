@@ -128,7 +128,10 @@ $(document).ready(function(){
 
   function market_value(styleid, condition, mileage, zip) {
     $.get('https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv?styleid='+styleid+'&condition='+condition+'&mileage='+mileage+'&zip='+zip+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-      console.log(data);
+      var private_party = (data.tmv.totalWithOptions.usedPrivateParty);
+      var retail = (data.tmv.totalWithOptions.usedTmvRetail);
+      var trade_in = (data.tmv.totalWithOptions.usedTradeIn);
+      $('#trade').append('<h3>Private Sale: $'+private_party+'</h3><h3>Trade In: $'+trade_in+'</h3><h3>Retail: $'+retail+'</h3>');
     });
   }
 
