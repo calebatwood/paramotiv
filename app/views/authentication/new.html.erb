@@ -1,0 +1,19 @@
+<div class='well authenticate'>
+  <%= form_tag signin_path do |f| %>
+    <div>
+      <%= label_tag :username %>
+    </div>
+    <div>
+      <%= text_field_tag :username %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+    </div>
+    <div>
+      <%= password_field_tag :password %>
+    </div>
+    <div>
+      <%= submit_tag 'Sign In', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

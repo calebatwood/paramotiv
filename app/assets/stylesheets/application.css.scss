@@ -30,6 +30,27 @@ nav {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.authenticate {
+  width: 30%;
+}
+.authenticate input {
+  color: #000;
+}
+.authenticate .btn-success {
+  margin-top: 10px;
+}
+.register {
+  width: 30%;
+}
+.register input {
+  color: #000;
+}
+.register input[type='file'] {
+  color: #fff;
+}
+.register .btn-success {
+  margin-top: 10px;
+}
 #garage {
   min-width: 100%;
 }
