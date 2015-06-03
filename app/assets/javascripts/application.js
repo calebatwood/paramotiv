@@ -65,14 +65,18 @@ $(document).ready(function(){
       console.log(data.styles);
       $('car_style').empty();
       $.each(styleArray, function(index, value) {
-        // $('#car_style').append('<option value="' + value.name + '">' + value.name + '</option>');
         $('#car_style').append($('<option>', {value: value.name, id: value.id, text: value.name}));
+          console.log(value.year);
+          //obtain model_year_id
+          var array = [];
+          array.push(value.year);
+          console.log(array[0].id);
+          $('#car_model_year_id').val(array[0].id);
       });
     });
   }
   //obtain style_id
   $(document).on('change', '#car_style', function(){
-    console.log('hi');
     var style_id = $('#car_style :selected').prop('id');
     $('#car_style_id').val(style_id);
   });
@@ -135,6 +139,34 @@ $(document).ready(function(){
     });
   }
 
+  //get maintenance schedule
+  $('.btn-primary').on('click', function(){
+    $(this).addClass('maintenance');
+    var model_year_id = $('.maintenance').attr('value');
+    maintenance_schedule(model_year_id);
+  });
 
+  function maintenance_schedule(model_year_id) {
+    $.get('https://api.edmunds.com/v1/api/maintenance/actionrepository/findbymodelyearid?modelyearid='+model_year_id+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+        console.log(data.actionHolder);
+        var mileageArray = [];
+          $.each(data.actionHolder, function(index, value) {
+            var mileage = value.intervalMileage;
+            mileageArray.push(mileage);
+          });
+        console.log(mileageArray);
+        var unique = mileageArray.filter(function(item, i, ar) {
+          return ar.indexOf(item) === i;
+        });
+        console.log(unique);
+          var sorted = unique.sort(function(a, b){
+            return a - b;
+          });
+        console.log(sorted);
+
+        $('td.maintenance').removeClass('maintenance');
+
+    });
+  }
 
 });
