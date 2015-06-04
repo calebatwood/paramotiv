@@ -88,6 +88,8 @@ $(document).ready(function(){
     var make = $('.dealer').attr('value');
     nearest_dealer(zip, make);
     $('.well.dealership').remove();
+    $('.well.maintenance').remove();
+    $('#trade').css('visibility', 'hidden');
   });
 
   function nearest_dealer(zip, make) {
@@ -120,6 +122,8 @@ $(document).ready(function(){
     console.log('hi');
     $(this).addClass('trade');
     $('#trade').css('visibility', 'visible');
+    $('.well.dealership').remove();
+    $('.well.maintenance').remove();
   });
 
   $('.btn-default').on('click', function(){
@@ -145,6 +149,8 @@ $(document).ready(function(){
     var model_year_id = $('.maintenance').attr('value');
     maintenance_schedule(model_year_id);
     $('.well.maintenance').remove();
+    $('.well.dealership').remove();
+    $('#trade').css('visibility', 'hidden');
   });
 
 
@@ -211,10 +217,18 @@ $(document).ready(function(){
           console.log(value[0]);
           if (value[0] == val){
             console.log('wahoo');
-            $('.main[value="'+val+'"]').append('<p>'+value[1]+': '+value[2]+'</p>');
+            $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
+            $('.main[value="'+val+'"]').hide();
           }
         });
-
+        $('.well.maintenance p').on('click', function(){
+          $('.maintenance p').hide();
+          $('.main[value="'+val+'"]').show();
+        });
+        // $('.main[value="'+val+'"]').html('Close').on('click', function(){
+        //   $('.maintenance p').hide();
+        //   $(this).show();
+        // });
       });
   }
 
