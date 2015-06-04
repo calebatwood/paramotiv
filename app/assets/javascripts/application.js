@@ -139,34 +139,86 @@ $(document).ready(function(){
     });
   }
 
-  //get maintenance schedule
+  //get maintenance schedule buttons
   $('.btn-primary').on('click', function(){
     $(this).addClass('maintenance');
     var model_year_id = $('.maintenance').attr('value');
     maintenance_schedule(model_year_id);
+    $('.well.maintenance').remove();
   });
+
+
 
   function maintenance_schedule(model_year_id) {
     $.get('https://api.edmunds.com/v1/api/maintenance/actionrepository/findbymodelyearid?modelyearid='+model_year_id+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-        console.log(data.actionHolder);
         var mileageArray = [];
+        var itemArray = [];
+        var actionArray = [];
           $.each(data.actionHolder, function(index, value) {
             var mileage = value.intervalMileage;
+            var item = value.item;
+            var action = value.action;
             mileageArray.push(mileage);
+            itemArray.push(item);
+            actionArray.push(action);
           });
-        console.log(mileageArray);
-        var unique = mileageArray.filter(function(item, i, ar) {
-          return ar.indexOf(item) === i;
-        });
-        console.log(unique);
-          var sorted = unique.sort(function(a, b){
-            return a - b;
-          });
-        console.log(sorted);
+
+        match_arrays(mileageArray, itemArray, actionArray);
 
         $('td.maintenance').removeClass('maintenance');
 
     });
   }
+
+  function match_arrays(mileageArray, itemArray, actionArray) {
+    var groupArray = [];
+      for(i=0;i < itemArray.length; i++){
+        var shiftArray = [];
+        var mileage = mileageArray.shift();
+        shiftArray.push(mileage);
+        var action = actionArray.shift();
+        shiftArray.push(action);
+        var item = itemArray.shift();
+        shiftArray.push(item);
+        groupArray.push(shiftArray);
+      }
+    // console.log(groupArray);
+    var buttonArray = [];
+    $.each(groupArray, function(index, value){
+      buttonArray.push(value[0]);
+      // var service = value[0]+' '+value[1]+' '+value[2];
+      // $('#maintenance').append('<p>'+service+'</p>');
+    });
+    // console.log(buttonArray);
+
+    var unique = buttonArray.filter(function(item, i, ar) {
+      return ar.indexOf(item) === i;
+    });
+    //sort unique array by ascending mileage
+      var sorted = unique.sort(function(a, b){
+        return a - b;
+      });
+
+      //make unique dynamic
+      $.each(sorted, function(index, value){
+        $('#maintenance').append('<div class="well maintenance"><div class="btn btn-default main" value="'+value+'">'+value+'</div></div>');
+      });
+
+      $('.main').on('click', function(){
+        var val = $(this).attr('value');
+        $.each(groupArray, function(index, value){
+          console.log(val);
+          console.log(value[0]);
+          if (value[0] == val){
+            console.log('wahoo');
+            $('.main[value="'+val+'"]').append('<p>'+value[1]+': '+value[2]+'</p>');
+          }
+        });
+
+      });
+  }
+
+
+
 
 });
