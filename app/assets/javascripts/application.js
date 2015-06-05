@@ -12,7 +12,7 @@ $(document).ready(function(){
   //display car make selection
   $.ajax({
       type: "GET",
-      url: "http://api.edmunds.com/api/vehicle/v2/makes?fmt=json&state=new&api_key=scgz9esm95u72e7rh8mv5kyz",
+      url: "https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&state=new&api_key=scgz9esm95u72e7rh8mv5kyz",
       dataType: "jsonp",
       success: function(data) {
         var makeArray = data.makes;
@@ -93,7 +93,7 @@ $(document).ready(function(){
   });
 
   function nearest_dealer(zip, make) {
-    $.get('http://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+    $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       console.log(data);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
