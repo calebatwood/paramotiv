@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'cars#index'
+  root 'welcome#index'
 
-  resources :cars
-  resources :users
+  resources :users do
+    resources :cars
+  end
 
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'

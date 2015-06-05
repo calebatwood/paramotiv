@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :cars
   enum role: {user: 0, admin: 1}
   mount_uploader :avatar, AvatarUploader
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end

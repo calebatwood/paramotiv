@@ -1,5 +1,6 @@
+<% if current_user %>
 <div class="well" id="new">
-  <%= form_for @car do |f| %>
+  <%= form_for [@user, @car] do |f| %>
     <div class="initialize">
     <p><%= f.label :make %></p>
     <%= f.select :make, [], {}, {class: 'form-control'} %>
@@ -18,3 +19,4 @@
     </div>
   <% end %>
 </div>
+<% end %>
