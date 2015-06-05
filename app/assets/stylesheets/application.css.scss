@@ -8,6 +8,29 @@ body {
 nav {
   opacity: 0.8;
 }
+.title p {
+  text-align: center;
+  font-size: 5em;
+}
+.user_login {
+  text-align: center;
+  margin-top: 30px;
+}
+.user_login .btn {
+  background-color: transparent;
+  color: #fff;
+  border: 3px solid;
+  border-color: #fff;
+  margin-left: 90px;
+  margin-right: 90px;
+  width: 120px;
+}
+#auth {
+  width: 20%;
+}
+#register {
+  width: 30%;
+}
 .btn {
   margin-left: 3px;
 }
@@ -54,6 +77,28 @@ nav {
 .register .btn-success {
   margin-top: 10px;
   color: #fff;
+}
+#register {
+  width: 30%;
+}
+#register input {
+  color: #000;
+}
+#register input[type='file'] {
+  color: #fff;
+}
+#register .btn-success {
+  margin-top: 10px;
+  color: #fff;
+}
+#auth {
+  width: 30%;
+}
+#auth input {
+  color: #000;
+}
+#auth .btn-success {
+  margin-top: 10px;
 }
 #garage {
   min-width: 100%;

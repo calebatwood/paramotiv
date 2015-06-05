@@ -1,1 +1,72 @@
-<div class="title"><p>PARAMOTIV</p></div>
+<div class='title'>
+  <p>PARAMOTIV</p>
+</div>
+<div class='user_login'>
+  <a class='btn user' id='noob'>New User</a><a class='btn user' id='return'>Returning User</a>
+</div>
+
+<div class='well' id='auth'>
+  <%= form_tag signin_path do |f| %>
+    <div>
+      <%= label_tag :username %>
+    </div>
+    <div>
+      <%= text_field_tag :username %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+    </div>
+    <div>
+      <%= password_field_tag :password %>
+    </div>
+    <div>
+      <%= submit_tag 'Sign In', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
+<div class='well' id='register'>
+  <%= form_for @user, url: signup_path, html: {multipart: true} do |f| %>
+    <div>
+      <%= f.file_field :avatar %>
+    </div>
+    <div>
+      <%= f.label :username %>
+    </div>
+    <div>
+      <%= f.text_field :username %>
+    </div>
+    <div>
+      <%= f.label :first_name %>
+    </div>
+    <div>
+      <%= f.text_field :first_name %>
+    </div>
+    <div>
+      <%= f.label :last_name %>
+    </div>
+    <div>
+      <%= f.text_field :last_name %>
+    </div>
+    <div>
+      <%= f.label :zip_code %>
+    </div>
+    <div>
+      <%= f.text_field :zip_code %>
+    </div>
+    <div>
+      <%= f.label :password %>
+    </div>
+    <div>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation %>
+    </div>
+    <div>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div>
+      <%= f.submit class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

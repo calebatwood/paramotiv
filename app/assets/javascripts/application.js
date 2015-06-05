@@ -9,6 +9,20 @@ $(document).ready(function(){
   //hide trade-in form initially
   $('#trade').css('visibility', 'hidden');
 
+  //hide user registration and auth
+  $('#auth').css('visibility', 'hidden');
+  $('#register').css('visibility', 'hidden');
+
+  //show user registration and auth
+  $('#noob').on('click', function(){
+    $('#register').css('visibility', 'visible');
+  });
+
+  $('#return').on('click', function(){
+    $('#auth').css('visibility', 'visible');
+  });
+
+
   //display car make selection
   $.ajax({
       type: "GET",
