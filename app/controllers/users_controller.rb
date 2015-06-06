@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @cars = @user.cars
+    @car = Car.new
   end
 
   def edit
@@ -35,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    
   end
 
   private

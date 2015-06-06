@@ -9,8 +9,8 @@
           </div>
           <div class='btn col-xs-12 garage'>
             <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span> GARAGE</p>
-
           </div>
+          <div class='col-xs-12 drop'><a class='new_cars'>+ Vehicle</a><% @cars.each do |car| %><p> <%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %></p><% end %></div>
           <div class='btn col-xs-12 research'>
             <p><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> RESEARCH</p>
 
@@ -18,6 +18,59 @@
       </div>
     </div>
     <div class='col-xs-8 content'>
+      <div class='new_car'>
+        <div class="well" id="new">
+          <%= form_for [@user, @car] do |f| %>
+            <div class="initialize">
+            <p><%= f.label :make %></p>
+            <%= f.select :make, [], {}, {class: 'form-control'} %>
+            <p><%= f.label :model %></p>
+            <%= f.select :model, [], {}, {class: 'form-control'} %>
+            <p><%= f.label :year %></p>
+            <%= f.select :year, [], {}, {class: 'form-control'} %>
+            <p><%= f.label :style %></p>
+            <%= f.select :style, [], {}, {class: 'form-control'} %>
+            <p><%= f.label :zip %></p>
+            <%= f.text_field :zip, {class: 'form-control'} %>
+            <%= f.hidden_field :style_id  %>
+            <%= f.hidden_field :model_year_id %>
+              <br>
+                <%= f.submit 'Boom', class: 'btn btn-success' %><a class='btn btn-success cancel_new_car'>Cancel</a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class='well'>
+        <table id='garage'>
+          <tbody>
+            <% @cars.each do |car| %>
+              <tr>
+                <td><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %></h4></td>
+                <td class='pull-right'><%= link_to 'Remove from garage', user_car_path(@user, car), class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</td>
+                <td class='btn btn-success' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</td>
+                <td class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div id='trade'>
+        <div class='well trade_form'>
+          <select class='form-control condition'>
+            <option disabled selected>Select Condition</option>
+            <option>Outstanding</option>
+            <option>Clean</option>
+            <option>Average</option>
+            <option>Rough</option>
+            <option>Damaged</option>
+          </select>
+          <input type='text' class='form-control mileage' value='Mileage'>
+          <div class='btn btn-default'>Calculate True Market Value</div>
+        </div>
+      </div>
 
+      <div id='dealer'></div>
+      <div id='maintenance'></div>
     </div>
 </div>

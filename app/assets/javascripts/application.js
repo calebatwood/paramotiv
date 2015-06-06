@@ -246,7 +246,21 @@ $(document).ready(function(){
       });
   }
 
+  //new car form
+  $('.new_car').css('visibility', 'hidden');
+  $('.new_car').css('height', '0px');
 
+  $('.new_cars').on('click', function(){
+    if($('.new_car').css('visibility', 'hidden')){
+      $('.new_car').css('visibility', 'visible');
+      $('.new_car').css('height', '100%');
+    }
+  });
+
+  $('.cancel_new_car').on('click', function(){
+    $('.new_car').css('visibility', 'hidden');
+    $('.new_car').css('height', '0px');
+  });
 
 
 });
