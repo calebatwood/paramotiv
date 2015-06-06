@@ -1,3 +1,23 @@
-<h1>wooo!</h1>
 
-<div class='thumb' id='profile_pic'><%= image_tag(@user.avatar.thumb.url) %></div>
+<div class='row user_nav'>
+    <div class='col-xs-12 col-sm-4' id='user_info'>
+      <div class='row'>
+          <div class='col-xs-8'>
+            <div class='thumb' id='profile_pic'><%= image_tag(@user.avatar.url) %></div>
+          </div>
+          <div class='col-xs-4'>
+          </div>
+          <div class='btn col-xs-12 garage'>
+            <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span> GARAGE</p>
+
+          </div>
+          <div class='btn col-xs-12 research'>
+            <p><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> RESEARCH</p>
+
+          </div>
+      </div>
+    </div>
+    <div class='col-xs-8 content'>
+
+    </div>
+</div>

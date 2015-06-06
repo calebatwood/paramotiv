@@ -2,16 +2,48 @@
 @import "bootstrap";
 
 body {
-  background-image: image-url("/night_cars.jpg");
+  background-image: image-url("/night_cars_2.jpg");
+  background-attachment: fixed;
   color: #fff;
 }
-nav {
-  opacity: 0.8;
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  min-height: 100px;
+  border-bottom: 3px solid;
+  border-color: #fff;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+.navbar-nav > li > a.dropdown-toggle {
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+.title {
+  margin: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .title p {
   text-align: center;
-  font-size: 5em;
+  font-size: 9em;
+  height: auto;
+  opacity: 0.9;
 }
+.description {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.description p {
+  font-size: 1.7em;
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+}
+
 .user_login {
   text-align: center;
   margin-top: 30px;
@@ -19,11 +51,15 @@ nav {
 .user_login .btn {
   background-color: transparent;
   color: #fff;
-  border: 3px solid;
+  opacity: 0.9;
+  border: 5px solid;
   border-color: #fff;
-  margin-left: 90px;
-  margin-right: 90px;
-  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 2em;
+}
+.user_login .btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #auth {
   width: 20%;
@@ -110,4 +146,98 @@ nav {
 .initialize p {
   color: #fff;
   padding-top: 5px;
+}
+//user show page
+#user_info {
+  background-color: #000;
+  min-height: 600px;
+}
+
+#profile_pic img {
+  border: 5px solid;
+  border-color: green;
+  border-radius: 3px;
+  align: right;
+  width: 100%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.row.user_nav {
+  padding-top: 100px;
+}
+
+.edit {
+  margin-top: 15px;
+  border: 3px solid;
+  border-color: #fff;
+  font-size: 1.5em;
+}
+.garage {
+  background-color: rgba(171, 255, 4, 0.9);
+  border: 5px solid;
+  border-color: green;
+  height: 150px;
+  width: 96.8%;
+  margin-left: 15px;
+  margin-top: 15px;
+
+}
+.garage:hover {
+  background-color: rgba(171, 255, 4, 0.8);
+  border: 5px solid;
+  border-color: green;
+  height: 150px;
+  width: 96.8%;
+  margin-left: 15px;
+  margin-top: 15px;
+
+}
+.glyphicon-home {
+  font-size: 2em;
+}
+.garage p {
+  font-size: 3em;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 50px;
+  color: green;
+
+}
+.research {
+  background-color: rgba(171, 255, 4, 0.9);
+  border: 5px solid;
+  border-color: green;
+  height: 150px;
+  width: 96.8%;
+  margin-left: 15px;
+  margin-top: 15px;
+
+}
+.research:hover {
+  background-color: rgba(171, 255, 4, 0.8);
+  border: 5px solid;
+  border-color: green;
+  height: 150px;
+  width: 96.8%;
+  margin-left: 15px;
+  margin-top: 15px;
+
+}
+.glyphicon-list-alt {
+  font-size: 2em;
+}
+.research p {
+  font-size: 3em;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 50px;
+  color: green;
+
+}
+//content
+.content {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 600px;
 }
