@@ -2,12 +2,12 @@ class CarsController < ApplicationController
 
   def index
     @user = current_user
-    @cars = Car.all
+    @cars = @user.cars
+    @car = Car.new
   end
 
   def new
-    @user = current_user
-    @car = Car.new
+
   end
 
   def create
@@ -15,7 +15,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     if @car.save
-      redirect_to user_path(@user)
+      redirect_to user_cars_path(@user)
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CarsController < ApplicationController
   def destroy
     @car = current_user.cars.find(params[:id])
     @car.destroy
-      redirect_to user_path(current_user)
+      redirect_to user_cars_path(current_user)
   end
 
   private

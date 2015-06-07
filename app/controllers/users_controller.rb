@@ -2,10 +2,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = User.new
+    @car = Car.new
+    @cars = current_user.cars
   end
 
   def new
-    @user = User.new
   end
 
   def create
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   private

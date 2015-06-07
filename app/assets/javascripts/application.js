@@ -6,8 +6,20 @@
 
 $(document).ready(function(){
 
+  $('#my_garage').hide();
+
+  //show home
+  $('.h').on('click', function(){
+    $('#welcome').show();
+    $('#my_garage').hide();
+  });
+  //show garage
+  $('.g').on('click', function(){
+    $('#welcome').hide();
+    $('#my_garage').show();
+  });
   //hide trade-in form initially
-  $('#trade').css('visibility', 'hidden');
+  // $('#trade').css('visibility', 'hidden');
 
   //hide user registration and auth
   $('#auth').css('visibility', 'hidden');
@@ -107,7 +119,7 @@ $(document).ready(function(){
   });
 
   function nearest_dealer(zip, make) {
-    $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=1&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+    $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=3&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       console.log(data);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
@@ -133,27 +145,35 @@ $(document).ready(function(){
 
   //get trade-in value
   $('.btn-danger').on('click', function(){
-    console.log('hi');
-    $(this).addClass('trade');
-    $('#trade').css('visibility', 'visible');
-    $('.well.dealership').remove();
-    $('.well.maintenance').remove();
+    if ($('.btn-danger').hasClass('trade')){
+      $(this).removeClass('trade');
+      $('.well.trade_form').remove();
+      $('.tmv').remove();
+    } else {
+      $(this).addClass('trade');
+      $('#trade').append('<div class="well trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div></div>');
+      $('#trade').css('visibility', 'visible');
+      $('.well.dealership').remove();
+      $('.well.maintenance').remove();
+    }
+    $('.btn-default').on('click', function(){
+      console.log('hey');
+      var styleid = $('.trade').attr('value');
+      var condition = $('.condition').val();
+      var mileage = $('.mileage').val();
+      var zip = $('.trade').attr('data');
+      market_value(styleid, condition, mileage, zip);
+    });
   });
 
-  $('.btn-default').on('click', function(){
-    var styleid = $('.trade').attr('value');
-    var condition = $('.condition').val();
-    var mileage = $('.mileage').val();
-    var zip = $('.trade').attr('data');
-    market_value(styleid, condition, mileage, zip);
-  });
+
 
   function market_value(styleid, condition, mileage, zip) {
     $.get('https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv?styleid='+styleid+'&condition='+condition+'&mileage='+mileage+'&zip='+zip+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       var private_party = (data.tmv.totalWithOptions.usedPrivateParty);
       var retail = (data.tmv.totalWithOptions.usedTmvRetail);
       var trade_in = (data.tmv.totalWithOptions.usedTradeIn);
-      $('#trade').append('<h3>Private Sale: $'+private_party+'</h3><h3>Trade In: $'+trade_in+'</h3><h3>Retail: $'+retail+'</h3>');
+      $('#trade').append('<h3 class="tmv">Private Sale: $'+private_party+'</h3><h3 class="tmv">Trade In: $'+trade_in+'</h3><h3 class="tmv">Retail: $'+retail+'</h3>');
     });
   }
 

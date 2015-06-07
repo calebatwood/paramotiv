@@ -6,12 +6,37 @@ body {
   background-attachment: fixed;
   color: #fff;
 }
+
+nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  }
+nav ul {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   display: inline-block;
+}
+nav ul li {
+  float: left;
+  padding: 17px 15px 12px 15px;
+  display: block;
+}
+nav ul li a {
+   font-size: 18px;
+   color: #fff;
+   text-decoration:none;
+}
+
+#top-nav ul li a:hover {
+   color: #4a7558;
+}
 .navbar {
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   min-height: 100px;
   border-bottom: 3px solid;
-  border-color: green;
+  border-color: #fff;
   border-radius: 0px;
   position: fixed;
   z-index: 100;
@@ -82,9 +107,6 @@ body {
   width: 40%;
   height: auto;
 }
-.trade_form {
-  width: 40%;
-}
 .condition {
   width: 80%;
 }
@@ -147,6 +169,10 @@ body {
 .initialize p {
   color: #fff;
   padding-top: 5px;
+}
+//user cars index
+h2 {
+  padding-top: 100px;
 }
 //user show page
 #user_info {
