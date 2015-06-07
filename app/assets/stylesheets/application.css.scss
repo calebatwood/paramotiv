@@ -100,9 +100,6 @@ nav ul li a {
   background-color: #000;
   border-color: #000;
 }
-.well.maintenance {
-  width: 40%;
-}
 .dealership {
   width: 40%;
   height: auto;
@@ -199,70 +196,41 @@ h2 {
   border-color: #fff;
   font-size: 1.5em;
 }
-.garage {
-  background-color: rgba(171, 255, 4, 0.9);
-  border: 5px solid;
-  border-color: green;
-  height: 150px;
-  width: 96.8%;
-  margin-left: 15px;
-  margin-top: 15px;
+// .garage {
+//   background-color: rgba(171, 255, 4, 0.9);
+//   border: 5px solid;
+//   border-color: green;
+//   height: 150px;
+//   width: 96.8%;
+//   margin-left: 15px;
+//   margin-top: 15px;
+//
+// }
+// .garage:hover {
+//   background-color: rgba(171, 255, 4, 0.8);
+//   border: 5px solid;
+//   border-color: green;
+//   height: 150px;
+//   width: 96.8%;
+//   margin-left: 15px;
+//   margin-top: 15px;
+//
+// }
+// .glyphicon-home {
+//   font-size: 2em;
+// }
+// .garage p {
+//   font-size: 3em;
+//   vertical-align: middle;
+//   text-align: center;
+//   margin-top: 15px;
+//   margin-right: 50px;
+//   color: green;
+//
+// }
 
-}
-.garage:hover {
-  background-color: rgba(171, 255, 4, 0.8);
-  border: 5px solid;
-  border-color: green;
-  height: 150px;
-  width: 96.8%;
-  margin-left: 15px;
-  margin-top: 15px;
-
-}
-.glyphicon-home {
-  font-size: 2em;
-}
-.garage p {
-  font-size: 3em;
-  vertical-align: middle;
-  text-align: center;
-  margin-top: 15px;
-  margin-right: 50px;
-  color: green;
-
-}
-
-.research {
-  background-color: rgba(171, 255, 4, 0.9);
-  border: 5px solid;
-  border-color: green;
-  height: 150px;
-  width: 96.8%;
-  margin-left: 15px;
-  margin-top: 15px;
-
-}
-.research:hover {
-  background-color: rgba(171, 255, 4, 0.8);
-  border: 5px solid;
-  border-color: green;
-  height: 150px;
-  width: 96.8%;
-  margin-left: 15px;
-  margin-top: 15px;
-
-}
-.glyphicon-list-alt {
-  font-size: 2em;
-}
-.research p {
-  font-size: 3em;
-  vertical-align: middle;
-  text-align: center;
-  margin-top: 15px;
-  margin-right: 50px;
-  color: green;
-
+.serv {
+  margin-top: 20px;
 }
 //content
 .content {

@@ -4,9 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.new
     @car = Car.new
-
-      @cars = current_user.cars
-    
+    @cars = current_user.cars
   end
 
   def new

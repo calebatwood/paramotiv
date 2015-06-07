@@ -241,7 +241,10 @@ $(document).ready(function(){
 
       //make unique dynamic
       $.each(sorted, function(index, value){
+        var miles = $('.miles').attr('value');
+        if (miles < value && value < 150000) {
         $('#maintenance').append('<div class="well maintenance"><div class="btn btn-default main" value="'+value+'">'+value+'</div></div>');
+        }
       });
 
       $('.main').on('click', function(){
