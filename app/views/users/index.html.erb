@@ -99,6 +99,8 @@
             <%= f.select :style, [], {}, {class: 'form-control'} %>
             <p><%= f.label :zip %></p>
             <%= f.text_field :zip, {class: 'form-control'} %>
+            <p><%= f.label :mileage %></p>
+            <%= f.text_field :mileage, {class: 'form-control'} %>
             <%= f.hidden_field :style_id  %>
             <%= f.hidden_field :model_year_id %>
               <br>
@@ -110,7 +112,7 @@
       <table id='garage'>
         <tbody>
           <% @cars.each do |car| %>
-            <tr>
+            <tr data-car-url='<%= user_car_path(current_user, car) %>'>
               <td><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %></h4></td>
               <td><h4 class='miles' value='<%= car.mileage %>'>Mileage: <%= car.mileage %></h4></td>
               <td class='pull-right'><a class='btn btn-warning'>Remove From Garage</a></td>

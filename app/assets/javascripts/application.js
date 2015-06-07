@@ -285,5 +285,21 @@ $(document).ready(function(){
     $('.new_car').css('height', '0px');
   });
 
+  //delete car from garage
+  $('.btn-warning').on('click', function(){
+    var url = $(this).closest('tr').data('car-url');
+    console.log(url);
+    var row = $(this).closest('tr');
+    console.log(row);
+    $.ajax({
+      type: "DELETE",
+      url: url,
+      success: function(){
+        $(row).remove();
+        console.log('success');
+      }
+    });
+  });
+
 
 });

@@ -15,7 +15,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     if @car.save
-      redirect_to user_cars_path(@user)
+      redirect_to root_path
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CarsController < ApplicationController
   def destroy
     @car = current_user.cars.find(params[:id])
     @car.destroy
-      redirect_to user_cars_path(current_user)
+    render nothing: true
   end
 
   private
