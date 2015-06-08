@@ -1,55 +1,7 @@
-<div class='new_car'>
-  <div class="well" id="new">
-    <%= form_for [current_user, @car] do |f| %>
-      <div class="initialize">
-      <p><%= f.label :make %></p>
-      <%= f.select :make, [], {}, {class: 'form-control'} %>
-      <p><%= f.label :model %></p>
-      <%= f.select :model, [], {}, {class: 'form-control'} %>
-      <p><%= f.label :year %></p>
-      <%= f.select :year, [], {}, {class: 'form-control'} %>
-      <p><%= f.label :style %></p>
-      <%= f.select :style, [], {}, {class: 'form-control'} %>
-      <p><%= f.label :zip %></p>
-      <%= f.text_field :zip, {class: 'form-control'} %>
-      <p><%= f.label :mileage %></p>
-      <%= f.text_field :mileage, {class: 'form-control'} %>
-      <%= f.hidden_field :style_id  %>
-      <%= f.hidden_field :model_year_id %>
-        <br>
-          <%= f.submit 'Boom', class: 'btn btn-success' %><a class='btn btn-success cancel_new_car'>Cancel</a>
-      </div>
-    <% end %>
-  </div>
-</div>
-<% @cars.each do |car| %>
 <div class='well'>
-
-  <div id='garage'>
-
-    <h4>
-      <%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %>
-      <div class='pull-right'>
-        <%= link_to 'Remove from garage', user_car_path(current_user, car), class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %>
-        <a class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</a>
-        <a class='btn btn-success' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</a>
-        <a class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</a>
-      </div>
-    </h4>
-
-  </div>
-  <div id='dealer'></div>
-  <div id='maintenance'></div>
-  <div id='trade'></div>
-</div>
-<% end %>
-
-
-
-<div class='well'>
-  <div class='new_car'>
-    <div class="well" id="new">
-      <%= form_for [current_user, @car] do |f| %>
+  <div class='row'>
+    <div class='col-md-12 new_car'>
+      <%= form_for [current_user, @car], remote: true do |f| %>
         <div class="initialize">
         <p><%= f.label :make %></p>
         <%= f.select :make, [], {}, {class: 'form-control'} %>
@@ -66,32 +18,16 @@
         <%= f.hidden_field :style_id  %>
         <%= f.hidden_field :model_year_id %>
           <br>
-            <%= f.submit 'Boom', class: 'btn btn-success' %><a class='btn btn-success cancel_new_car'>Cancel</a>
+            <%= f.submit 'Add to Garage', class: 'btn btn-success add_car' %><a class='btn btn-success cancel_new_car'>Cancel</a>
         </div>
       <% end %>
     </div>
   </div>
-  <div id='garage'>
+  //car table
+  <div class='row' id='garage'>
     <% @cars.each do |car| %>
-    <h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %></h4>
+      <%= render car %>
     <% end %>
   </div>
-  <table id='garage'>
-    <tbody>
-      <% @cars.each do |car| %>
-        <tr>
-          <td><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %></h4></td>
-          <td><h4 class='miles' value='<%= car.mileage %>'>Mileage: <%= car.mileage %></h4></td>
-          <td class='pull-right'><a class='btn btn-warning'>Remove From Garage</a></td>
-          <td class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</td>
-          <td class='btn btn-success' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</td>
-          <td class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</td>
-        </tr>
-        <tr id='dealer'></tr>
-        <tr id='maintenance'></tr>
-        <tr id='trade'></tr>
-      <% end %>
 
-    </tbody>
-  </table>
 </div>

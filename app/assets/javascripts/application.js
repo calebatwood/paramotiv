@@ -108,13 +108,19 @@ $(document).ready(function(){
 
   //locate nearest dealer
   $('#garage').on('click', '.nearest', function(){
+    if ($(this).hasClass('dealer')) {
+      $(this).removeClass('dealer');
+      $('.well.dealership').remove();
+    } else {
     $(this).addClass('dealer');
+
     var zip = $('.dealer').attr('data');
     var make = $('.dealer').attr('value');
     nearest_dealer(zip, make);
-    $('.well.dealership').remove();
+
     $('.well.maintenance').remove();
-    $('#trade').css('visibility', 'hidden');
+    $('.trade_in_values').css('visibility', 'hidden');
+    }
   });
 
   function nearest_dealer(zip, make) {
@@ -133,7 +139,7 @@ $(document).ready(function(){
       var fri = (data.dealers[0].operations.Friday);
       var sat = (data.dealers[0].operations.Saturday);
       var sund = (data.dealers[0].operations.Sunday);
-      $('td.dealer').removeClass('dealer');
+      // $('td.dealer').removeClass('dealer');
       $('#dealer').append('<div class="well dealership"><a class="btn">Close</a><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div>');
       $('.dealership a').on('click', function(){
         $('.well.dealership').remove();
@@ -146,11 +152,12 @@ $(document).ready(function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
       $('.well.trade_form').remove();
-      $('.tmv').remove();
+      $('.trade_in_values').remove();
     } else {
       $(this).addClass('trade');
-      $('#trade').append('<div class="well trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div></div>');
-      $('#trade').css('visibility', 'visible');
+      $(this).closest('.row').append('<div class="col-xs-12 trade_in_values"></div>');
+      $('.trade_in_values').append('<div class="well trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
+      $('.trade_in_values').css('visibility', 'visible');
       $('.well.dealership').remove();
       $('.well.maintenance').remove();
     }
@@ -161,6 +168,7 @@ $(document).ready(function(){
       var mileage = $('.mileage').val();
       var zip = $('.trade').attr('data');
       market_value(styleid, condition, mileage, zip);
+
     });
   });
 
@@ -171,7 +179,7 @@ $(document).ready(function(){
       var private_party = (data.tmv.totalWithOptions.usedPrivateParty);
       var retail = (data.tmv.totalWithOptions.usedTmvRetail);
       var trade_in = (data.tmv.totalWithOptions.usedTradeIn);
-      $('#trade').append('<h3 class="tmv">Private Sale: $'+private_party+'</h3><h3 class="tmv">Trade In: $'+trade_in+'</h3><h3 class="tmv">Retail: $'+retail+'</h3>');
+      $('.trade_in_values').append('<h3 class="tmv">Private Sale: $'+private_party+'</h3><h3 class="tmv">Trade In: $'+trade_in+'</h3><h3 class="tmv">Retail: $'+retail+'</h3>');
     });
   }
 
@@ -182,7 +190,7 @@ $(document).ready(function(){
     maintenance_schedule(model_year_id);
     $('.well.maintenance').remove();
     $('.well.dealership').remove();
-    $('#trade').css('visibility', 'hidden');
+    $('.trade_in_values').css('visibility', 'hidden');
   });
 
 
@@ -313,8 +321,8 @@ $(document).ready(function(){
 
   //delete car from garage
   $('#garage').on('click', '.btn-warning', function(){
-    var url = $(this).closest('tr').data('car-url');
-    var row = $(this).closest('tr');
+    var url = $(this).closest('.row').data('car-url');
+    var row = $(this).closest('.row');
 
     $.ajax({
       type: "DELETE",

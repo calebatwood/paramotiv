@@ -78,6 +78,7 @@
     <% end %>
   </div>
 </div>
+<div class='container'>
 <div id='my_garage' data-user-id='<%= current_user.id %>'>
   <% if current_user %>
     <h2>Cars in your garage<div class='pull-right'><a class='btn btn-info new_cars'>Add Car to Garage</a></div></h2>
@@ -97,8 +98,6 @@
             <%= f.select :year, [], {}, {class: 'form-control'} %>
             <p><%= f.label :style %></p>
             <%= f.select :style, [], {}, {class: 'form-control'} %>
-            <p><%= f.label :zip %></p>
-            <%= f.text_field :zip, {class: 'form-control'} %>
             <p><%= f.label :mileage %></p>
             <%= f.text_field :mileage, {class: 'form-control'} %>
             <%= f.hidden_field :style_id  %>
@@ -109,18 +108,19 @@
           <% end %>
         </div>
       </div>
-      <div id='dealer'></div>
-      <div id='maintenance'></div>
-      <div id='trade'></div>
-      <table id='garage'>
-        <tbody>
-          <% @cars.each do |car| %>
-            <%= render car %>
-          <% end %>
-        </tbody>
-      </table>
-
     </div>
+
+    <div id='dealer'></div>
+    <div id='maintenance'></div>
+
+    <div class='row' id='garage'>
+      <% @cars.each do |car| %>
+        <%= render car %>
+      <% end %>
+    </div>
+
+
+
   <% else %>
     <h1>Please sign in to create garage</h1>
   <% end %>
@@ -128,4 +128,5 @@
 
 
 
+</div>
 </div>

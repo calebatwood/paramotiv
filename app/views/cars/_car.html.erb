@@ -1,8 +1,7 @@
-<tr data-car-url='<%= user_car_path(current_user, car) %>'>
-  <td><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> <%= car.style.truncate(40) %></h4></td>
-  <td><h4 class='miles' value='<%= car.mileage %>'>Mileage: <%= car.mileage %></h4></td>
-  <td class='pull-right'><a class='btn btn-warning'>Remove From Garage</a></td>
-  <td class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</td>
-  <td class='btn btn-success nearest' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</td>
-  <td class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</td>
-</tr>
+<div class='row' data-car-url='<%= user_car_path(current_user, car) %>'>
+  <div class='col-xs-12 col-md-4'><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %>,<em> current mileage: <%= car.mileage %></em></h4></div>
+  <div class='col-xs-12 col-md-2'><a class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</a></div>
+  <div class='col-xs-12 col-md-2'><a class='btn btn-success nearest' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</a></div>
+  <div class='col-xs-12 col-md-2'><a class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</a></div>
+  <div class='col-xs-12 col-md-2'><a class='btn btn-warning'>Remove From Garage</a></div>
+</div>
