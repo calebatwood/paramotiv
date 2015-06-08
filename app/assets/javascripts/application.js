@@ -71,7 +71,6 @@ $(document).ready(function(){
   function retrieve_years(make, model) {
     $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/years?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       var yearArray = data.years;
-      console.log(data.years);
       $('car_year').empty();
       $.each(yearArray, function(index, value) {
         $('#car_year').append('<option value="' + value.year + '">' + value.year + '</option>');
@@ -108,7 +107,7 @@ $(document).ready(function(){
   });
 
   //locate nearest dealer
-  $('.btn-success').on('click', function(){
+  $('.nearest').on('click', function(){
     $(this).addClass('dealer');
     var zip = $('.dealer').attr('data');
     var make = $('.dealer').attr('value');
@@ -120,7 +119,6 @@ $(document).ready(function(){
 
   function nearest_dealer(zip, make) {
     $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=3&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-      console.log(data);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
       var city = (data.dealers[0].address.city);
@@ -283,6 +281,29 @@ $(document).ready(function(){
   $('.cancel_new_car').on('click', function(){
     $('.new_car').css('visibility', 'hidden');
     $('.new_car').css('height', '0px');
+  });
+
+  //add car to garage
+  $('.add_car').on('click', function(e){
+    e.preventDefault();
+    var make = $('#car_make').val();
+    var model = $('#car_model').val();
+    var year = $('#car_year').val();
+    var style = $('#car_style').val();
+    var zip = $('#car_zip').val();
+    var mileage = $('#car_mileage').val();
+    var style_id = $('#car_style_id').val();
+    var model_year_id = $('#car_model_year_id').val();
+    $.post('/users/3/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
+      if (res.status == 'success') {
+      console.log('wooot');
+      $('.new_car').css('visibility', 'hidden');
+      $('.new_car').css('height', '0px');
+    } else {
+      console.log('fix it');
+    }
+    });
+
   });
 
   //delete car from garage

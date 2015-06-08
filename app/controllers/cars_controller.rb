@@ -7,17 +7,17 @@ class CarsController < ApplicationController
   end
 
   def new
-
+    @car = Car.new
+    @user = current_user
   end
 
   def create
-    @user = current_user
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     if @car.save
-      redirect_to root_path
+      render json: { status: 'success' }
     else
-      render :new
+      render json: { status: 'failure' }
     end
   end
 
