@@ -1,5 +1,5 @@
 <div class='row' data-car-url='<%= user_car_path(current_user, car) %>'>
-  <div class='col-xs-12 col-md-4'><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %>,<em> current mileage: <%= car.mileage %></em></h4></div>
+  <div class='col-xs-12 col-md-4'><h4 class='miles' value='<%= car.mileage %>'><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %>,<em> current mileage: <%= car.mileage %></em></h4></div>
   <div class='col-xs-12 col-md-2'><a class='btn btn-primary' value="<%= car.model_year_id %>">Maintenance</a></div>
   <div class='col-xs-12 col-md-2'><a class='btn btn-success nearest' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</a></div>
   <div class='col-xs-12 col-md-2'><a class='btn btn-danger' value="<%= car.style_id %>" data="<%= current_user.zip_code %>">Trade In</a></div>

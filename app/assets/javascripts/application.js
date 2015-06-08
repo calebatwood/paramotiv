@@ -18,9 +18,11 @@ $(document).ready(function(){
     $('#welcome').hide();
     $('#my_garage').show();
   });
-  //hide trade-in form initially
-  // $('#trade').css('visibility', 'hidden');
 
+  $('.btn.user').on('click', function(){
+    $('#welcome').hide();
+    $('#my_garage').show();
+  });
   //hide user registration and auth
   $('#auth').css('visibility', 'hidden');
   $('#register').css('visibility', 'hidden');
@@ -110,16 +112,17 @@ $(document).ready(function(){
   $('#garage').on('click', '.nearest', function(){
     if ($(this).hasClass('dealer')) {
       $(this).removeClass('dealer');
-      $('.well.dealership').remove();
+      $('.service_schedule').remove();
+      $('.close_dealers').remove();
+      $('.trade_in_values').remove();
     } else {
-    $(this).addClass('dealer');
-
-    var zip = $('.dealer').attr('data');
-    var make = $('.dealer').attr('value');
-    nearest_dealer(zip, make);
-
-    $('.well.maintenance').remove();
-    $('.trade_in_values').css('visibility', 'hidden');
+      $(this).addClass('dealer');
+      $(this).closest('.row').append('<div class="col-xs-12 close_dealers"></div>');
+      var zip = $('.dealer').attr('data');
+      var make = $('.dealer').attr('value');
+      nearest_dealer(zip, make);
+      $('.service_schedule').remove();
+      $('.trade_in_values').remove();
     }
   });
 
@@ -140,10 +143,7 @@ $(document).ready(function(){
       var sat = (data.dealers[0].operations.Saturday);
       var sund = (data.dealers[0].operations.Sunday);
       // $('td.dealer').removeClass('dealer');
-      $('#dealer').append('<div class="well dealership"><a class="btn">Close</a><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div>');
-      $('.dealership a').on('click', function(){
-        $('.well.dealership').remove();
-      });
+      $('.close_dealers').append('<div class="dealership"><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div>');
     });
   }
 
@@ -151,15 +151,16 @@ $(document).ready(function(){
   $('#garage').on('click', '.btn-danger', function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
-      $('.well.trade_form').remove();
+      $('.service_schedule').remove();
       $('.trade_in_values').remove();
+      $('.close_dealers').remove();
     } else {
       $(this).addClass('trade');
       $(this).closest('.row').append('<div class="col-xs-12 trade_in_values"></div>');
-      $('.trade_in_values').append('<div class="well trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
+      $('.trade_in_values').append('<div class="trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
       $('.trade_in_values').css('visibility', 'visible');
-      $('.well.dealership').remove();
-      $('.well.maintenance').remove();
+      $('.service_schedule').remove();
+      $('.close_dealers').remove();
     }
     $('#garage').on('click', '.btn-default', function(){
       console.log('hey');
@@ -185,12 +186,19 @@ $(document).ready(function(){
 
   //get maintenance schedule buttons
   $('#garage').on('click', '.btn-primary', function(){
-    $(this).addClass('maintenance');
-    var model_year_id = $('.maintenance').attr('value');
-    maintenance_schedule(model_year_id);
-    $('.well.maintenance').remove();
-    $('.well.dealership').remove();
-    $('.trade_in_values').css('visibility', 'hidden');
+    if ($(this).hasClass('maintenance')){
+      $(this).removeClass('maintenance');
+      $('.service_schedule').remove();
+      $('.close_dealers').remove();
+      $('.trade_in_values').remove();
+    } else {
+      $(this).addClass('maintenance');
+      $(this).closest('.row').append('<div class="col-xs-12 service_schedule"></div>');
+      var model_year_id = $('.maintenance').attr('value');
+      maintenance_schedule(model_year_id);
+      $('.close_dealers').remove();
+      $('.trade_in_values').remove();
+    }
   });
 
 
@@ -210,9 +218,6 @@ $(document).ready(function(){
           });
 
         match_arrays(mileageArray, itemArray, actionArray);
-
-        $('td.maintenance').removeClass('maintenance');
-
     });
   }
 
@@ -249,30 +254,23 @@ $(document).ready(function(){
       $.each(sorted, function(index, value){
         var miles = $('.miles').attr('value');
         if (miles < value && value < 150000) {
-        $('#maintenance').append('<div class="well maintenance"><div class="btn btn-default main" value="'+value+'">'+value+'</div></div>');
+        $('.service_schedule').append('<div class="col-xs-12 col-md-4 main" value="'+value+'">'+value+'</div>');
         }
       });
 
-      $('.main').on('click', function(){
-        var val = $(this).attr('value');
+
+      var val = $('.main').attr('value');
         $.each(groupArray, function(index, value){
           console.log(val);
           console.log(value[0]);
-          if (value[0] == val){
-            console.log('wahoo');
-            $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
-            $('.main[value="'+val+'"]').hide();
-          }
-        });
-        $('.well.maintenance p').on('click', function(){
-          $('.maintenance p').hide();
-          $('.main[value="'+val+'"]').show();
-        });
-        // $('.main[value="'+val+'"]').html('Close').on('click', function(){
-        //   $('.maintenance p').hide();
-        //   $(this).show();
-        // });
+          // if (value[0] == val){
+          //   console.log('wahoo');
+          //   $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
+          //
+          // }
       });
+
+
   }
 
   //new car form
@@ -289,6 +287,15 @@ $(document).ready(function(){
   $('.cancel_new_car').on('click', function(){
     $('.new_car').css('visibility', 'hidden');
     $('.new_car').css('height', '0px');
+    $('#car_make').val('');
+    $('#car_model').val('');
+    $('#car_year').val('');
+    $('#car_style').val('');
+    $('#car_zip').val('');
+    $('#car_mileage').val('');
+    $('#car_style_id').val('');
+    $('#car_model_year_id').val('');
+
   });
 
   //add car to garage

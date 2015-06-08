@@ -100,10 +100,7 @@ nav ul li a {
   background-color: #000;
   border-color: #000;
 }
-.dealership {
-  width: 40%;
-  height: auto;
-}
+
 .condition {
   width: 80%;
 }
@@ -196,44 +193,7 @@ h2 {
   border-color: #fff;
   font-size: 1.5em;
 }
-// .garage {
-//   background-color: rgba(171, 255, 4, 0.9);
-//   border: 5px solid;
-//   border-color: green;
-//   height: 150px;
-//   width: 96.8%;
-//   margin-left: 15px;
-//   margin-top: 15px;
-//
-// }
-// .garage:hover {
-//   background-color: rgba(171, 255, 4, 0.8);
-//   border: 5px solid;
-//   border-color: green;
-//   height: 150px;
-//   width: 96.8%;
-//   margin-left: 15px;
-//   margin-top: 15px;
-//
-// }
-// .glyphicon-home {
-//   font-size: 2em;
-// }
-// .garage p {
-//   font-size: 3em;
-//   vertical-align: middle;
-//   text-align: center;
-//   margin-top: 15px;
-//   margin-right: 50px;
-//   color: green;
-//
-// }
 
-.serv {
-  margin-top: 20px;
-}
-//content
-.content {
-  background-color: rgba(0, 0, 0, 0.5);
-  min-height: 600px;
+.main {
+  min-height: 150px;
 }
