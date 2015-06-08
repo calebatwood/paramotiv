@@ -286,6 +286,7 @@ $(document).ready(function(){
   //add car to garage
   $('.add_car').on('click', function(e){
     e.preventDefault();
+    var user = $('#my_garage').data('user_id');
     var make = $('#car_make').val();
     var model = $('#car_model').val();
     var year = $('#car_year').val();
@@ -294,7 +295,7 @@ $(document).ready(function(){
     var mileage = $('#car_mileage').val();
     var style_id = $('#car_style_id').val();
     var model_year_id = $('#car_model_year_id').val();
-    $.post('/users/3/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
+    $.post('/users/'+user+'/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
 
       $('#garage').append(res);
 

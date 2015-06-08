@@ -78,7 +78,7 @@
     <% end %>
   </div>
 </div>
-<div id='my_garage'>
+<div id='my_garage' data-user-id='<%= current_user.id %>'>
   <% if current_user %>
     <h2>Cars in your garage<div class='pull-right'><a class='btn btn-info new_cars'>Add Car to Garage</a></div></h2>
     <br>
