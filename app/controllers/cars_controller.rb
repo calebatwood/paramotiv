@@ -15,7 +15,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user_id = current_user.id
     if @car.save
-      render json: { status: 'success' }
+      render @car
     else
       render json: { status: 'failure' }
     end

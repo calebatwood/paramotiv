@@ -295,13 +295,21 @@ $(document).ready(function(){
     var style_id = $('#car_style_id').val();
     var model_year_id = $('#car_model_year_id').val();
     $.post('/users/3/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
-      if (res.status == 'success') {
-      console.log('wooot');
+
+      $('#garage').append(res);
+
       $('.new_car').css('visibility', 'hidden');
       $('.new_car').css('height', '0px');
-    } else {
-      console.log('fix it');
-    }
+      $('#car_make').val('');
+      $('#car_model').val('');
+      $('#car_year').val('');
+      $('#car_style').val('');
+      $('#car_zip').val('');
+      $('#car_mileage').val('');
+      $('#car_style_id').val('');
+      $('#car_model_year_id').val('');
+
+
     });
 
   });
@@ -309,15 +317,13 @@ $(document).ready(function(){
   //delete car from garage
   $('.btn-warning').on('click', function(){
     var url = $(this).closest('tr').data('car-url');
-    console.log(url);
     var row = $(this).closest('tr');
-    console.log(row);
+
     $.ajax({
       type: "DELETE",
       url: url,
       success: function(){
         $(row).remove();
-        console.log('success');
       }
     });
   });
