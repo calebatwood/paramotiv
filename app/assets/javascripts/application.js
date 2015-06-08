@@ -107,7 +107,7 @@ $(document).ready(function(){
   });
 
   //locate nearest dealer
-  $('.nearest').on('click', function(){
+  $('#garage').on('click', '.nearest', function(){
     $(this).addClass('dealer');
     var zip = $('.dealer').attr('data');
     var make = $('.dealer').attr('value');
@@ -142,7 +142,7 @@ $(document).ready(function(){
   }
 
   //get trade-in value
-  $('.btn-danger').on('click', function(){
+  $('#garage').on('click', '.btn-danger', function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
       $('.well.trade_form').remove();
@@ -154,7 +154,7 @@ $(document).ready(function(){
       $('.well.dealership').remove();
       $('.well.maintenance').remove();
     }
-    $('.btn-default').on('click', function(){
+    $('#garage').on('click', '.btn-default', function(){
       console.log('hey');
       var styleid = $('.trade').attr('value');
       var condition = $('.condition').val();
@@ -176,7 +176,7 @@ $(document).ready(function(){
   }
 
   //get maintenance schedule buttons
-  $('.btn-primary').on('click', function(){
+  $('#garage').on('click', '.btn-primary', function(){
     $(this).addClass('maintenance');
     var model_year_id = $('.maintenance').attr('value');
     maintenance_schedule(model_year_id);
@@ -296,9 +296,7 @@ $(document).ready(function(){
     var style_id = $('#car_style_id').val();
     var model_year_id = $('#car_model_year_id').val();
     $.post('/users/'+user+'/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
-
       $('#garage').append(res);
-
       $('.new_car').css('visibility', 'hidden');
       $('.new_car').css('height', '0px');
       $('#car_make').val('');
@@ -309,14 +307,12 @@ $(document).ready(function(){
       $('#car_mileage').val('');
       $('#car_style_id').val('');
       $('#car_model_year_id').val('');
-
-
     });
 
   });
 
   //delete car from garage
-  $('.btn-warning').on('click', function(){
+  $('#garage').on('click', '.btn-warning', function(){
     var url = $(this).closest('tr').data('car-url');
     var row = $(this).closest('tr');
 

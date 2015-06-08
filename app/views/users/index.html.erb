@@ -109,6 +109,9 @@
           <% end %>
         </div>
       </div>
+      <div id='dealer'></div>
+      <div id='maintenance'></div>
+      <div id='trade'></div>
       <table id='garage'>
         <tbody>
           <% @cars.each do |car| %>
@@ -116,6 +119,7 @@
           <% end %>
         </tbody>
       </table>
+
     </div>
   <% else %>
     <h1>Please sign in to create garage</h1>
