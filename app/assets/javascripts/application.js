@@ -361,7 +361,7 @@ $(document).ready(function(){
     var mileage = $('#car_mileage').val();
     var style_id = $('#car_style_id').val();
     var model_year_id = $('#car_model_year_id').val();
-    $.post('/users/'+user+'/cars', { car: { make: make, model: model, year: year, style: style, zip: zip, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
+    $.post('cars', { car: { make: make, model: model, year: year, style: style, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
       $('#garage').append(res);
       $('.new_car').css('visibility', 'hidden');
       $('.new_car').css('height', '0px');
