@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
   color: #fff;
 }
-.mg {
+.row.info {
   margin-top: 100px;
 }
 footer {
@@ -15,7 +15,7 @@ footer {
 nav {
   background-color: rgba(0, 0, 0, 0.9);
   text-align: center;
-  margin-top: -100px;
+
   z-index: 100;
   position: fixed;
   width: 100%;
@@ -101,6 +101,10 @@ nav ul li a {
   background-color: transparent;
 }
 
+.btn-info {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .well {
   background-color: #000;
   border-color: #000;
@@ -171,6 +175,7 @@ nav ul li a {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 //user cars index
 h2 {
   padding-top: 100px;
@@ -280,6 +285,15 @@ h2 {
   }
   .container {
     width: 95%;
+  }
+  h2 {
+    padding-top: 0px;
+  }
+  .ciyg {
+    padding-top: 50px;
+  }
+  .new_cars {
+    width: 100%;
   }
 
 }

@@ -84,61 +84,61 @@
 
 <div id='my_garage' data-user-id='<%= current_user.id %>'>
 
-  <div class='container mg'>
+  <div class='container'>
 
-  <% if current_user %>
-    <h2>Cars in your garage<div class='pull-right'><a class='btn btn-info new_cars'>Add Car to Garage</a></div></h2>
-    <br>
-    <br>
+    <% if current_user %>
+    <div class='row info'>
+      <div class='col-xs-12 col-md-6'><h2 class='ciyg'>Welcome to your Garage</h2></div><div class='col-xs-12 col-md-6'><h2><a class='btn btn-info new_cars'>Add Car to Garage</a></h2></div>
+    </div>
+      <br>
+      <br>
+
+        <div class='col-xs-12 new_car'>
+            <%= form_for [current_user, @car], remote: true do |f| %>
+              <div class='row initialize'>
+                <div class='col-xs-6 col-md-4'>
+                  <p><%= f.label :make %></p>
+                  <%= f.select :make, [], {}, {class: 'form-control'} %>
+                </div>
+                <div class='col-xs-6 col-md-4'>
+                  <p><%= f.label :model %></p>
+                  <%= f.select :model, [], {}, {class: 'form-control'} %>
+                </div>
+                <div class='col-xs-6 col-md-4'>
+                  <p><%= f.label :year %></p>
+                  <%= f.select :year, [], {}, {class: 'form-control'} %>
+                </div>
+                <div class='col-xs-6 col-md-4'>
+                  <p><%= f.label :style %></p>
+                  <%= f.select :style, [], {}, {class: 'form-control'} %>
+                </div>
+                <div class='col-md-4'>
+                  <p><%= f.label :mileage %></p>
+                  <%= f.text_field :mileage, {class: 'form-control'} %>
+                  <%= f.hidden_field :style_id  %>
+                  <%= f.hidden_field :model_year_id %>
+                </div>
+                <div class='col-md-4'>
+                  <br>
+                  <br>
+                  <%= f.submit 'Add to Garage', class: 'btn btn-success add_car' %><a class='btn btn-success cancel_new_car'>Cancel</a>
+                </div>
+              </div>
+            <% end %>
+        </div>
 
 
-      <div class='col-xs-12 new_car'>
-          <%= form_for [current_user, @car], remote: true do |f| %>
-            <div class='row initialize'>
-              <div class='col-xs-6 col-md-4'>
-                <p><%= f.label :make %></p>
-                <%= f.select :make, [], {}, {class: 'form-control'} %>
-              </div>
-              <div class='col-xs-6 col-md-4'>
-                <p><%= f.label :model %></p>
-                <%= f.select :model, [], {}, {class: 'form-control'} %>
-              </div>
-              <div class='col-xs-6 col-md-4'>
-                <p><%= f.label :year %></p>
-                <%= f.select :year, [], {}, {class: 'form-control'} %>
-              </div>
-              <div class='col-xs-6 col-md-4'>
-                <p><%= f.label :style %></p>
-                <%= f.select :style, [], {}, {class: 'form-control'} %>
-              </div>
-              <div class='col-md-4'>
-                <p><%= f.label :mileage %></p>
-                <%= f.text_field :mileage, {class: 'form-control'} %>
-                <%= f.hidden_field :style_id  %>
-                <%= f.hidden_field :model_year_id %>
-              </div>
-              <div class='col-md-4'>
-                <br>
-                <br>
-                <%= f.submit 'Add to Garage', class: 'btn btn-success add_car' %><a class='btn btn-success cancel_new_car'>Cancel</a>
-              </div>
-            </div>
-          <% end %>
+      <div class='row' id='garage'>
+        <% @cars.each do |car| %>
+          <%= render car %>
+        <% end %>
       </div>
 
 
-    <div class='row' id='garage'>
-      <% @cars.each do |car| %>
-        <%= render car %>
-      <% end %>
-    </div>
 
-
-
-  <% else %>
-    <h1>Please sign in to create garage</h1>
-  <% end %>
-
+    <% else %>
+      <h1>Please sign in to create garage</h1>
+    <% end %>
 
 
 
