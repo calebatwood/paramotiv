@@ -3,7 +3,7 @@
     <p>PARAMOTIV</p>
   </div>
   <div class='description'>
-      <p>An application that lets you build a garage of your vehicles ,
+      <p>An application that utilizes the EDMUNDS.com API to let you build a garage of vehicles,
       track their past service records and look up their next. Locate and
       contact your nearest dealer. Figure out what your current car is worth
       and find your next one.</p>
@@ -14,7 +14,7 @@
     <!-- <a class='btn user' id='noob'>New User</a><a class='btn user' id='return'>Returning User</a> -->
   </div>
 
-  <div class='well' id='auth'>
+  <!-- <div class='well' id='auth'>
     <%= form_tag signin_path do |f| %>
       <div>
         <%= label_tag :username %>
@@ -78,7 +78,7 @@
         <%= f.submit class: 'btn btn-success' %>
       </div>
     <% end %>
-  </div>
+  </div> -->
 </div>
 <div class='container'>
 <div id='my_garage' data-user-id='<%= current_user.id %>'>
@@ -118,7 +118,7 @@
       <% end %>
     </div>
 
-
+    <a class='tester'>Test images</a>
 
   <% else %>
     <h1>Please sign in to create garage</h1>

@@ -155,10 +155,12 @@ $(document).ready(function(){
       $('.service_schedule').remove();
       $('.trade_in_values').remove();
       $('.close_dealers').remove();
+      $('tmv').remove();
     } else {
       $(this).addClass('trade');
       $(this).closest('.row').append('<div class="col-md-4 col-md-offset-8 col-xs-12 trade_in_values"></div>');
-      $('.trade_in_values').append('<div class="trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
+      var mileage = $('.trade').data('mileage');
+      $('.trade_in_values').append('<div class="trade_form"><h6>Condition</h6><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><h6>Mileage</h6><input type="text" class="form-control mileage" value="'+mileage+'"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
       $('.trade_in_values').css('visibility', 'visible');
       $('.service_schedule').remove();
       $('.close_dealers').remove();
@@ -168,9 +170,9 @@ $(document).ready(function(){
       var styleid = $('.trade').attr('value');
       var condition = $('.condition').val();
       var mileage = $('.mileage').val();
-      var zip = $('.trade').attr('data');
+      var zip = $('.trade').data('zip');
       market_value(styleid, condition, mileage, zip);
-
+      // $(this).removeClass('trade');
     });
   });
 
@@ -201,8 +203,6 @@ $(document).ready(function(){
       $('.trade_in_values').remove();
     }
   });
-
-
 
   function maintenance_schedule(model_year_id) {
     $.get('https://api.edmunds.com/v1/api/maintenance/actionrepository/findbymodelyearid?modelyearid='+model_year_id+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
@@ -359,6 +359,17 @@ $(document).ready(function(){
   });
 
 
+  $('.tester').on('click', function(){
+    retrieve_images();
+  });
+  function retrieve_images() {
+    $.get('https://api.edmunds.com/api/media/v2/styles/200692674/photos?api_key=scgz9esm95u72e7rh8mv5kyz', function(data){
+      console.log(data);
+    });
+    // $.get('https://api.edmunds.com/api/media/v2/styles/200703383/photos?pagenum=1&pagesize=10&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+    //   console.log(data);
+    // });
 
+  }
 
 });
