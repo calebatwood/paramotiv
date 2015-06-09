@@ -1,19 +1,19 @@
 class CarsController < ApplicationController
 
   def index
-    @user = current_user
+    @user = User.find(1)
     @cars = @user.cars
     @car = Car.new
   end
 
   def new
     @car = Car.new
-    @user = current_user
+    @user = User.find(1)
   end
 
   def create
     @car = Car.new(car_params)
-    @car.user_id = current_user.id
+    @car.user_id = 1
     if @car.save
       render @car
     else
@@ -34,7 +34,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car = current_user.cars.find(params[:id])
+    @car = User.find(1).cars.find(params[:id])
     @car.destroy
     render nothing: true
   end
