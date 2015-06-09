@@ -87,9 +87,9 @@
     <br>
     <br>
 
-    <div class='well'>
-      <div class='new_car'>
-        <div class="well" id="new">
+
+      <div class='col-xs-12 new_car'>
+        <div class="well">
           <%= form_for [current_user, @car], remote: true do |f| %>
             <div class="initialize">
             <p><%= f.label :make %></p>
@@ -110,7 +110,7 @@
           <% end %>
         </div>
       </div>
-    </div>
+
 
     <div class='row' id='garage'>
       <% @cars.each do |car| %>

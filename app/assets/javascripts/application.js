@@ -142,8 +142,9 @@ $(document).ready(function(){
       var fri = (data.dealers[0].operations.Friday);
       var sat = (data.dealers[0].operations.Saturday);
       var sund = (data.dealers[0].operations.Sunday);
-      // $('td.dealer').removeClass('dealer');
-      $('.close_dealers').append('<div class="dealership"><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div>');
+
+        $('.close_dealers').append('<div class="dealership"><div class="col-md-4 col-md-offset-4"><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p></div><div class="col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div></div>');
+
     });
   }
 
@@ -156,7 +157,7 @@ $(document).ready(function(){
       $('.close_dealers').remove();
     } else {
       $(this).addClass('trade');
-      $(this).closest('.row').append('<div class="col-xs-12 trade_in_values"></div>');
+      $(this).closest('.row').append('<div class="col-md-4 col-md-offset-8 col-xs-12 trade_in_values"></div>');
       $('.trade_in_values').append('<div class="trade_form"><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><input type="text" class="form-control mileage" value="Mileage"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
       $('.trade_in_values').css('visibility', 'visible');
       $('.service_schedule').remove();
@@ -252,23 +253,40 @@ $(document).ready(function(){
 
       //make unique dynamic
       $.each(sorted, function(index, value){
-        var miles = $('.miles').attr('value');
+        var miles = $('.maintenance').data('mileage');
         if (miles < value && value < 150000) {
-        $('.service_schedule').append('<div class="col-xs-12 col-md-4 main" value="'+value+'">'+value+'</div>');
+        $('.service_schedule').append('<div class="col-xs-12 col-md-3 main" value="'+value+'"><h3>At '+value+' Miles</h3></div>');
         }
+        // console.log(value);
+        $.each(groupArray, function(index, val){
+          // console.log(val[0]);
+          if (val[0] == value) {
+            $('.main[value="'+value+'"]').append('<p>'+val[1]+':  '+val[2]+'</p>');
+              var seen = {};
+              $('.main[value="'+value+'"] p').each(function() {
+                  var service = $(this).text();
+                  if (seen[service])
+                      $(this).remove();
+                  else
+                      seen[service] = true;
+              });
+          }
+        });
       });
 
 
-      var val = $('.main').attr('value');
-        $.each(groupArray, function(index, value){
-          console.log(val);
-          console.log(value[0]);
-          // if (value[0] == val){
-          //   console.log('wahoo');
-          //   $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
-          //
-          // }
-      });
+
+
+      // var val = $('.main').attr('value');
+      //   $.each(groupArray, function(index, value){
+      //     console.log(val);
+      //     console.log(value[0]);
+      //     if (value[0] == val){
+      //       console.log('wahoo');
+      //       $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
+      //
+      //     }
+      //   });
 
 
   }
@@ -339,6 +357,8 @@ $(document).ready(function(){
       }
     });
   });
+
+
 
 
 });
