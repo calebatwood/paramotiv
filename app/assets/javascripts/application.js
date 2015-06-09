@@ -158,20 +158,22 @@ $(document).ready(function(){
   $('#garage').on('click', '.btn-danger', function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
+      $('.tmv').remove();
       $('.service_schedule').remove();
       $('.recall_list').remove();
       $('.trade_in_values').remove();
       $('.close_dealers').remove();
-      $('tmv').remove();
+
     } else {
       $(this).addClass('trade');
       $(this).closest('.row').append('<div class="col-md-4 col-md-offset-8 col-xs-12 trade_in_values"></div>');
       var mileage = $('.trade').data('mileage');
-      $('.trade_in_values').append('<div class="trade_form"><h6>Condition</h6><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><h6>Mileage</h6><input type="text" class="form-control mileage" value="'+mileage+'"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
+      $('.trade_in_values').append('<div class="trade_form"><h6>Condition</h6><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><h6>Mileage</h6><input type="text" class="form-control mileage" value="'+mileage+'"><div class="btn btn-default">Calculate True Market Value</div></div>');
       $('.trade_in_values').css('visibility', 'visible');
       $('.service_schedule').remove();
       $('.recall_list').remove();
       $('.close_dealers').remove();
+
     }
     $('#garage').on('click', '.btn-default', function(){
       console.log('hey');
@@ -180,7 +182,7 @@ $(document).ready(function(){
       var mileage = $('.mileage').val();
       var zip = $('.trade').data('zip');
       market_value(styleid, condition, mileage, zip);
-      // $(this).removeClass('trade');
+
     });
   });
 
@@ -191,7 +193,8 @@ $(document).ready(function(){
       var private_party = (data.tmv.totalWithOptions.usedPrivateParty);
       var retail = (data.tmv.totalWithOptions.usedTmvRetail);
       var trade_in = (data.tmv.totalWithOptions.usedTradeIn);
-      $('.trade_in_values').append('<h3 class="tmv">Private Sale: $'+private_party+'</h3><h3 class="tmv">Trade In: $'+trade_in+'</h3><h3 class="tmv">Retail: $'+retail+'</h3>');
+      $('.tmv').remove();
+      $('.trade_in_values').append('<div class="tmv"><h3>Private Sale: $'+private_party+'</h3><h3>Trade In: $'+trade_in+'</h3><h3>Retail: $'+retail+'</h3></div>');
     });
   }
 
