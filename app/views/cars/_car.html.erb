@@ -1,5 +1,5 @@
 <div class='row vehicle' data-car-url='<%= user_car_path(current_user, car) %>'>
-  <div class='col-xs-10 col-xs-offset-1 col-md-3 col-md-offset-0'><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> / <em><%= car.mileage %> miles</em></h4></div>
+  <div class='col-xs-10 col-xs-offset-1 col-md-3 col-md-offset-0 name'><h4><%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> / <em><%= car.mileage %> miles</em></h4></div>
   <div class='col-xs-6 col-md-2'><a class='btn btn-primary' value="<%= car.model_year_id %>" data-mileage="<%= car.mileage %>">Maintenance</a></div>
   <div class='col-xs-6 col-md-1'><a class='btn btn-primary find_recalls' value="<%= car.model_year_id %>">Recalls</a></div>
   <div class='col-xs-6 col-md-2'><a class='btn btn-success nearest' value="<%= car.make %>" data="<%= current_user.zip_code %>">Nearest Dealer</a></div>

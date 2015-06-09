@@ -7,21 +7,25 @@
 $(document).ready(function(){
 
   $('#my_garage').hide();
+  $('nav').hide();
 
   //show home
   $('.h').on('click', function(){
     $('#welcome').show();
+    $('nav').hide();
     $('#my_garage').hide();
   });
   //show garage
   $('.g').on('click', function(){
     $('#welcome').hide();
     $('#my_garage').show();
+    $('nav').show();
   });
 
-  $('.btn.user').on('click', function(){
+  $('.title').on('click', function(){
     $('#welcome').hide();
     $('#my_garage').show();
+    $('nav').show();
   });
   //hide user registration and auth
   $('#auth').css('visibility', 'hidden');
@@ -145,7 +149,7 @@ $(document).ready(function(){
       var sat = (data.dealers[0].operations.Saturday);
       var sund = (data.dealers[0].operations.Sunday);
 
-        $('.close_dealers').append('<div class="dealership"><div class="col-md-4 col-md-offset-4"><h4>'+name+'</h4><p>'+street+'</p><p>'+city+' ,'+state+' '+zip+'</p><p>Phone: '+phone+'</p></div><div class="col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:'+mon+'</p><p>Tuesday: '+tue+'</p><p>Wednesday: '+wed+'</p><p>Thursday: '+thur+'</p><p>Friday: '+fri+'</p><p>Saturday: '+sat+'</p><p>Sunday: '+sund+'</p></div></div>');
+        $('.close_dealers').append('<div class="dealership"><div class="col-xs-12 col-md-4 col-md-offset-4"><h3>'+name+'</h3><br><h4>'+street+'</h4><h4>'+city+', '+state+' '+zip+'</h4><h4>Phone: '+phone+'</h4><br></div><div class="col-xs-12 col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:  '+mon+'</p><p>Tuesday:  '+tue+'</p><p>Wednesday:  '+wed+'</p><p>Thursday:  '+thur+'</p><p>Friday:  '+fri+'</p><p>Saturday:  '+sat+'</p><p>Sunday:  '+sund+'</p></div></div>');
 
     });
   }
@@ -279,22 +283,6 @@ $(document).ready(function(){
           }
         });
       });
-
-
-
-
-      // var val = $('.main').attr('value');
-      //   $.each(groupArray, function(index, value){
-      //     console.log(val);
-      //     console.log(value[0]);
-      //     if (value[0] == val){
-      //       console.log('wahoo');
-      //       $('.main[value="'+val+'"]').parent().append('<p>'+value[1]+': '+value[2]+'</p>');
-      //
-      //     }
-      //   });
-
-
   }
 
   //find recalls
@@ -310,6 +298,9 @@ $(document).ready(function(){
       $(this).closest('.row').append('<div class="col-xs-12 recall_list"></div>');
       var model_year_id = $('.recall').attr('value');
       retrieve_recalls(model_year_id);
+      $('.service_schedule').remove();
+      $('.close_dealers').remove();
+      $('.trade_in_values').remove();
     }
   });
   function retrieve_recalls(model_year_id) {
@@ -326,7 +317,7 @@ $(document).ready(function(){
           var affected = value.numberOfVehiclesAffected;
           var date = value.ownerNotificationDate;
           console.log(comp);
-          $('.recall_list').append('<div class="col-xs-12 col-md-4"><h5>COMPONENT / '+comp+'</h5><h5>'+desc+'</h5><h5>'+conseq+'</h5><h5>'+action+'</h5><h5>'+affected+' VEHICLES AFFECTED</h5><h5>DATE OF RECALL / '+date+'</h5></div>');
+          $('.recall_list').append('<div class="col-xs-12 col-md-4 recall_info"><h5>COMPONENT / '+comp+'</h5><h5>'+desc+'</h5><h5>'+conseq+'</h5><h5>'+action+'</h5><h5>'+affected+' VEHICLES AFFECTED</h5><h5>DATE OF RECALL / '+date+'</h5></div>');
         });
       }
     });

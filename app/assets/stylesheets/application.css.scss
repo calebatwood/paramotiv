@@ -6,12 +6,19 @@ body {
   background-attachment: fixed;
   color: #fff;
 }
+.mg {
+  margin-top: 100px;
+}
 footer {
   margin-top: 400px;
 }
 nav {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   text-align: center;
+  margin-top: -100px;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
   }
 nav ul {
    margin: 0;
@@ -29,40 +36,30 @@ nav ul li a {
    color: #fff;
    text-decoration:none;
 }
-// #top-nav {
-//   position: fixed;
-//   width: 100%;
+// #top-nav h1 {
+//   padding-top: 15px;
 // }
 
 #top-nav ul li a:hover {
    color: #4a7558;
 }
-.navbar {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  min-height: 100px;
-  border-bottom: 3px solid;
-  border-color: #fff;
-  border-radius: 0px;
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-}
-.navbar-nav > li > a.dropdown-toggle {
-  color: #fff;
-  font-size: 1.5em;
-  margin-top: 20px;
-}
+
 .title {
   margin: auto;
   padding-top: 100px;
   padding-bottom: 100px;
 }
 .title p {
+  color: #fff;
+  text-decoration: none;
   text-align: center;
   font-size: 9em;
   height: auto;
   opacity: 0.9;
+  cursor: pointer;
+}
+.title a {
+  text-decoration: none;
 }
 .description {
   width: 100%;
@@ -71,37 +68,39 @@ nav ul li a {
 }
 .description p {
   font-size: 1.7em;
-  width: 60%;
+  width: 80%;
   margin: auto;
   padding: 20px;
 }
 
-.user_login {
-  text-align: center;
-  margin-top: 30px;
-}
-.user_login .btn {
-  background-color: transparent;
-  color: #fff;
-  opacity: 0.9;
-  border: 5px solid;
-  border-color: #fff;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 2em;
-}
-.user_login .btn:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-#auth {
-  width: 20%;
-}
-#register {
-  width: 30%;
-}
+// .user_login {
+//   text-align: center;
+//   margin-top: 30px;
+// }
+// .user_login .btn {
+//   background-color: transparent;
+//   color: #fff;
+//   opacity: 0.9;
+//   border: 5px solid;
+//   border-color: #fff;
+//   margin-left: 10px;
+//   margin-right: 10px;
+//   font-size: 2em;
+// }
+// .user_login .btn:hover {
+//   background-color: rgba(0, 0, 0, 0.5);
+// }
+// #auth {
+//   width: 20%;
+// }
+// #register {
+//   width: 30%;
+// }
 .btn {
   margin-left: 3px;
+  background-color: transparent;
 }
+
 .well {
   background-color: #000;
   border-color: #000;
@@ -115,50 +114,50 @@ nav ul li a {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.authenticate {
-  width: 30%;
-}
-.authenticate input {
-  color: #000;
-}
-.authenticate .btn-success {
-  margin-top: 10px;
-}
-.register {
-  width: 30%;
-}
-.register input {
-  color: #000;
-}
-.register input[type='file'] {
-  color: #fff;
-}
-.register .btn-success {
-  margin-top: 10px;
-  color: #fff;
-}
-#register {
-  width: 30%;
-}
-#register input {
-  color: #000;
-}
-#register input[type='file'] {
-  color: #fff;
-}
-#register .btn-success {
-  margin-top: 10px;
-  color: #fff;
-}
-#auth {
-  width: 30%;
-}
-#auth input {
-  color: #000;
-}
-#auth .btn-success {
-  margin-top: 10px;
-}
+// .authenticate {
+//   width: 30%;
+// }
+// .authenticate input {
+//   color: #000;
+// }
+// .authenticate .btn-success {
+//   margin-top: 10px;
+// }
+// .register {
+//   width: 30%;
+// }
+// .register input {
+//   color: #000;
+// }
+// .register input[type='file'] {
+//   color: #fff;
+// }
+// .register .btn-success {
+//   margin-top: 10px;
+//   color: #fff;
+// }
+// #register {
+//   width: 30%;
+// }
+// #register input {
+//   color: #000;
+// }
+// #register input[type='file'] {
+//   color: #fff;
+// }
+// #register .btn-success {
+//   margin-top: 10px;
+//   color: #fff;
+// }
+// #auth {
+//   width: 30%;
+// }
+// #auth input {
+//   color: #000;
+// }
+// #auth .btn-success {
+//   margin-top: 10px;
+// }
 #garage {
   min-width: 100%;
 }
@@ -167,6 +166,10 @@ nav ul li a {
 .initialize p {
   color: #fff;
   padding-top: 5px;
+}
+.new_car {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 //user cars index
 h2 {
@@ -178,15 +181,15 @@ h2 {
   min-height: 600px;
 }
 
-#profile_pic img {
-  border: 5px solid;
-  border-color: green;
-  border-radius: 3px;
-  align: right;
-  width: 100%;
-  margin-top: 15px;
-  margin-left: 15px;
-}
+// #profile_pic img {
+//   border: 5px solid;
+//   border-color: green;
+//   border-radius: 3px;
+//   align: right;
+//   width: 100%;
+//   margin-top: 15px;
+//   margin-left: 15px;
+// }
 .row.user_nav {
   padding-top: 100px;
 }
@@ -201,6 +204,9 @@ h2 {
 .main {
   height: 300px;
   overflow: scroll;
+  border: solid 2px;
+  border-color: rgba(255, 255, 255, 0.9);
+
 }
 
 .vehicle {
@@ -218,6 +224,12 @@ h2 {
 .closest_dealers {
   margin-top: 20px;
 }
+.recall_info {
+  border: solid 2px;
+  border-color: rgba(255, 255, 255, 0.9);
+  height: 300px;
+  overflow: scroll;
+}
 
 
 @media (max-width: 600px) {
@@ -230,6 +242,9 @@ h2 {
   .description p {
     font-size: 16px;
     width: 90%;
+  }
+  .name h4 {
+    font-size: 1.5em;
   }
   .col-xs-6 {
     margin-bottom: 5px;
@@ -253,10 +268,18 @@ h2 {
   .service_schedule {
     margin-top: 15px;
     margin-left: 15px;
+    content-align: center;
+  }
+  .main {
+    max-height: 200px;
+    max-width: 95%;
   }
   .closest_dealers {
     margin-top: 15px;
     margin-left: 15px;
+  }
+  .container {
+    width: 95%;
   }
 
 }
