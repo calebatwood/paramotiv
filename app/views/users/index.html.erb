@@ -82,7 +82,7 @@
   </div> -->
 </div>
 
-<div id='my_garage' data-user-id='<%= current_user.id %>'>
+<div id='my_garage' data-user-id='1'>
 
   <div class='container'>
 
@@ -94,7 +94,7 @@
       <br>
 
         <div class='col-xs-12 new_car'>
-            <%= form_for [current_user, @car], remote: true do |f| %>
+            <%= form_for [@user, @car], remote: true do |f| %>
               <div class='row initialize'>
                 <div class='col-xs-6 col-md-4'>
                   <p><%= f.label :make %></p>
