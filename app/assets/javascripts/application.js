@@ -113,6 +113,7 @@ $(document).ready(function(){
     if ($(this).hasClass('dealer')) {
       $(this).removeClass('dealer');
       $('.service_schedule').remove();
+      $('.recall_list').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     } else {
@@ -122,6 +123,7 @@ $(document).ready(function(){
       var make = $('.dealer').attr('value');
       nearest_dealer(zip, make);
       $('.service_schedule').remove();
+      $('.recall_list').remove();
       $('.trade_in_values').remove();
     }
   });
@@ -153,6 +155,7 @@ $(document).ready(function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
       $('.service_schedule').remove();
+      $('.recall_list').remove();
       $('.trade_in_values').remove();
       $('.close_dealers').remove();
       $('tmv').remove();
@@ -163,6 +166,7 @@ $(document).ready(function(){
       $('.trade_in_values').append('<div class="trade_form"><h6>Condition</h6><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><h6>Mileage</h6><input type="text" class="form-control mileage" value="'+mileage+'"><div class="btn btn-default">Calculate True Market Value</div><div id="trade"></div></div>');
       $('.trade_in_values').css('visibility', 'visible');
       $('.service_schedule').remove();
+      $('.recall_list').remove();
       $('.close_dealers').remove();
     }
     $('#garage').on('click', '.btn-default', function(){
@@ -192,6 +196,7 @@ $(document).ready(function(){
     if ($(this).hasClass('maintenance')){
       $(this).removeClass('maintenance');
       $('.service_schedule').remove();
+      $('.recall_list').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     } else {
@@ -199,6 +204,7 @@ $(document).ready(function(){
       $(this).closest('.row').append('<div class="col-xs-12 service_schedule"></div>');
       var model_year_id = $('.maintenance').attr('value');
       maintenance_schedule(model_year_id);
+      $('.recall_list').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     }
@@ -291,6 +297,42 @@ $(document).ready(function(){
 
   }
 
+  //find recalls
+  $('#garage').on('click', '.find_recalls', function(){
+    if ($(this).hasClass('recall')) {
+      $(this).removeClass('recall');
+      $('.recall_list').remove();
+      $('.service_schedule').remove();
+      $('.close_dealers').remove();
+      $('.trade_in_values').remove();
+    } else {
+      $(this).addClass('recall');
+      $(this).closest('.row').append('<div class="col-xs-12 recall_list"></div>');
+      var model_year_id = $('.recall').attr('value');
+      retrieve_recalls(model_year_id);
+    }
+  });
+  function retrieve_recalls(model_year_id) {
+    $.get('https://api.edmunds.com/v1/api/maintenance/recallrepository/findbymodelyearid?modelyearid='+model_year_id+'&fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data){
+      console.log(data.recallHolder.length);
+      if (data.recallHolder.length === 0) {
+        $('.recall_list').append('<div class="col-xs-12 col-md-6 col-md-offset-3"><h3>There are no recalls for your vehicle at this time.</h3></div>');
+      } else {
+        $.each(data.recallHolder, function(index, value){
+          var comp = value.componentDescription;
+          var desc = value.defectDescription;
+          var conseq = value.defectConsequence;
+          var action = value.defectCorrectiveAction;
+          var affected = value.numberOfVehiclesAffected;
+          var date = value.ownerNotificationDate;
+          console.log(comp);
+          $('.recall_list').append('<div class="col-xs-12 col-md-4"><h5>COMPONENT / '+comp+'</h5><h5>'+desc+'</h5><h5>'+conseq+'</h5><h5>'+action+'</h5><h5>'+affected+' VEHICLES AFFECTED</h5><h5>DATE OF RECALL / '+date+'</h5></div>');
+        });
+      }
+    });
+
+
+  }
   //new car form
   $('.new_car').css('visibility', 'hidden');
   $('.new_car').css('height', '0px');
@@ -359,17 +401,6 @@ $(document).ready(function(){
   });
 
 
-  $('.tester').on('click', function(){
-    retrieve_images();
-  });
-  function retrieve_images() {
-    $.get('https://api.edmunds.com/api/media/v2/styles/200692674/photos?api_key=scgz9esm95u72e7rh8mv5kyz', function(data){
-      console.log(data);
-    });
-    // $.get('https://api.edmunds.com/api/media/v2/styles/200703383/photos?pagenum=1&pagesize=10&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
-    //   console.log(data);
-    // });
 
-  }
 
 });
