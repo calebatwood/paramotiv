@@ -2,7 +2,9 @@
 @import "bootstrap";
 
 body {
-  background-image: image-url("/night_cars_2.jpg");
+  background-image: image-url("/back2.jpg");
+  background-size: 1550px;
+  // background-position: 0px -100px;
   background-attachment: fixed;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -11,7 +13,25 @@ body {
   margin-top: 200px;
 }
 footer {
-  margin-top: 400px;
+  background-color: rgba(0, 0, 0, 0.9);
+
+}
+.cr {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 50px;
+  float: left;
+  font-size: 18px;
+}
+.github {
+  margin-top: 18px;
+  margin-left: 50px;
+  float: left;
+}
+.linked {
+  margin-top: 14px;
+  margin-left: 50px;
+  float: left;
 }
 nav {
   background-color: rgba(0, 0, 0, 0.9);
@@ -37,18 +57,19 @@ nav ul li a {
    color: #fff;
    text-decoration:none;
 }
-// #top-nav h1 {
-//   padding-top: 15px;
-// }
+.h {
+  cursor: pointer;
+}
 
-#top-nav ul li a:hover {
-   color: #4a7558;
+.wrapper img {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .title {
   margin: auto;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 280px;
 }
 .title p {
   color: #fff;
@@ -56,7 +77,6 @@ nav ul li a {
   text-align: center;
   font-size: 9em;
   height: auto;
-  opacity: 0.9;
   cursor: pointer;
 }
 .title a {
@@ -76,81 +96,9 @@ nav ul li a {
 .ciyg {
   background-color: rgba(0, 0, 0, 0.7);
 }
-// .user_login {
-//   text-align: center;
-//   margin-top: 30px;
-// }
-// .user_login .btn {
-//   background-color: transparent;
-//   color: #fff;
-//   opacity: 0.9;
-//   border: 5px solid;
-//   border-color: #fff;
-//   margin-left: 10px;
-//   margin-right: 10px;
-//   font-size: 2em;
-// }
-// .user_login .btn:hover {
-//   background-color: rgba(0, 0, 0, 0.5);
-// }
-// #auth {
-//   width: 20%;
-// }
-// #register {
-//   width: 30%;
-// }
+
 .name h4 {
   margin-top: 3px;
-}
-.btn {
-  background-color: transparent;
-  height: 50px;
-  width: 150px;
-  font-size: 18px;
-  padding-top: 11px;
-  border: solid 2px;
-}
-.btn:hover {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-
-.btn-info {
-  background-color: transparent;
-  width: 200px;
-  color: #46b8da;
-  border-color: #46b8da;
-}
-.btn-primary.intervals {
-  color: #eacb00;
-  border-color: #eacb00;
-}
-.btn-primary.intervals:hover {
-  background-color: #eacb00;
-  color: rgba(0, 0, 0, 0.5);
-}
-.btn-primary.find_recalls {
-  color: #2e6da4;
-  border-color: #2e6da4;
-}
-.btn-primary.find_recalls:hover {
-  color: rgba(0, 0, 0, 0.5);
-}
-.btn-success {
-  color: #4cae4c;
-  border-color: #4cae4c;
-}
-.btn-danger {
-  color: #d43f3a;
-  border-color: #d43f3a;
-}
-.btn-warning {
-  color: #eea236;
-  border-color: #eea236;
-}
-.btn-default {
-  width: 260px;
-  color: #fff;
 }
 
 .well {
@@ -166,50 +114,7 @@ nav ul li a {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-// .authenticate {
-//   width: 30%;
-// }
-// .authenticate input {
-//   color: #000;
-// }
-// .authenticate .btn-success {
-//   margin-top: 10px;
-// }
-// .register {
-//   width: 30%;
-// }
-// .register input {
-//   color: #000;
-// }
-// .register input[type='file'] {
-//   color: #fff;
-// }
-// .register .btn-success {
-//   margin-top: 10px;
-//   color: #fff;
-// }
-// #register {
-//   width: 30%;
-// }
-// #register input {
-//   color: #000;
-// }
-// #register input[type='file'] {
-//   color: #fff;
-// }
-// #register .btn-success {
-//   margin-top: 10px;
-//   color: #fff;
-// }
-// #auth {
-//   width: 30%;
-// }
-// #auth input {
-//   color: #000;
-// }
-// #auth .btn-success {
-//   margin-top: 10px;
-// }
+
 #garage {
   min-width: 100%;
 }
@@ -226,30 +131,7 @@ nav ul li a {
 
 
 //user show page
-#user_info {
-  background-color: #000;
-  min-height: 600px;
-}
 
-// #profile_pic img {
-//   border: 5px solid;
-//   border-color: green;
-//   border-radius: 3px;
-//   align: right;
-//   width: 100%;
-//   margin-top: 15px;
-//   margin-left: 15px;
-// }
-.row.user_nav {
-  padding-top: 100px;
-}
-
-.edit {
-  margin-top: 15px;
-  border: 3px solid;
-  border-color: #fff;
-  font-size: 1.5em;
-}
 
 .main {
   height: 300px;
@@ -281,9 +163,9 @@ nav ul li a {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 4000px) {
   .title p {
-    font-size: 60px;
+    font-size: 120px;
   }
   .description {
     margin-top: 100px;
@@ -306,7 +188,27 @@ nav ul li a {
     min-height: 40px;
     font-size: 20px;
     padding-top: 10px;
-    background-color: transparent;
+  }
+  .btn {
+    background-color: #b1ffe0;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-top: 11px;
+    border: solid 2px;
+    border-color: #b1ffe0;
+  }
+  .btn:hover {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(214, 255, 224, 0.6);
+    border-color: #b1ffe0;
+  }
+  .btn-default {
+    width: 260px;
+  }
+  .cancel_new_car {
+    float: right;
   }
   .vehicle {
     padding-bottom: 20px;
@@ -332,7 +234,7 @@ nav ul li a {
     margin-left: 15px;
   }
   .container {
-    width: 95%;
+    width: 80%;
   }
   h2 {
     padding-top: 0px;
@@ -346,7 +248,7 @@ nav ul li a {
   }
 
 }
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
   .name h4 {
     font-size: 20px;
   }
