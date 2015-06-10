@@ -14,6 +14,7 @@ $(document).ready(function(){
     $('#welcome').show();
     $('nav').hide();
     $('#my_garage').hide();
+    $('footer').css('margin-top', '0px');
   });
   //show garage
   $('.g').on('click', function(){
@@ -26,6 +27,7 @@ $(document).ready(function(){
     $('#welcome').hide();
     $('#my_garage').show();
     $('nav').show();
+    $('footer').css('margin-top', '200px');
   });
   //hide user registration and auth
   $('#auth').css('visibility', 'hidden');
