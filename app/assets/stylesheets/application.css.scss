@@ -5,9 +5,10 @@ body {
   background-image: image-url("/night_cars_2.jpg");
   background-attachment: fixed;
   color: #fff;
+  font-family: 'Open Sans', sans-serif;
 }
 .row.info {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 footer {
   margin-top: 400px;
@@ -72,7 +73,9 @@ nav ul li a {
   margin: auto;
   padding: 20px;
 }
-
+.ciyg {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 // .user_login {
 //   text-align: center;
 //   margin-top: 30px;
@@ -96,13 +99,58 @@ nav ul li a {
 // #register {
 //   width: 30%;
 // }
+.name h4 {
+  margin-top: 3px;
+}
 .btn {
-  margin-left: 3px;
   background-color: transparent;
+  height: 50px;
+  width: 150px;
+  font-size: 18px;
+  padding-top: 11px;
+  border: solid 2px;
+}
+.btn:hover {
+  color: rgba(0, 0, 0, 0.5);
 }
 
+
 .btn-info {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  width: 200px;
+  color: #46b8da;
+  border-color: #46b8da;
+}
+.btn-primary.intervals {
+  color: #eacb00;
+  border-color: #eacb00;
+}
+.btn-primary.intervals:hover {
+  background-color: #eacb00;
+  color: rgba(0, 0, 0, 0.5);
+}
+.btn-primary.find_recalls {
+  color: #2e6da4;
+  border-color: #2e6da4;
+}
+.btn-primary.find_recalls:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+.btn-success {
+  color: #4cae4c;
+  border-color: #4cae4c;
+}
+.btn-danger {
+  color: #d43f3a;
+  border-color: #d43f3a;
+}
+.btn-warning {
+  color: #eea236;
+  border-color: #eea236;
+}
+.btn-default {
+  width: 260px;
+  color: #fff;
 }
 
 .well {
@@ -176,10 +224,7 @@ nav ul li a {
   padding-bottom: 20px;
 }
 
-//user cars index
-h2 {
-  padding-top: 100px;
-}
+
 //user show page
 #user_info {
   background-color: #000;
@@ -215,9 +260,8 @@ h2 {
 }
 
 .vehicle {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .trade_in_values {
   margin-top: 20px;
@@ -237,7 +281,7 @@ h2 {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .title p {
     font-size: 60px;
   }
@@ -249,7 +293,10 @@ h2 {
     width: 90%;
   }
   .name h4 {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    text-align: center;
   }
   .col-xs-6 {
     margin-bottom: 5px;
@@ -264,6 +311,7 @@ h2 {
   .vehicle {
     padding-bottom: 20px;
     margin-bottom: 20px;
+    margin-top: 25px;
     background-color: rgba(0, 0, 0, 0.8);
   }
   .trade_in_values {
@@ -290,10 +338,16 @@ h2 {
     padding-top: 0px;
   }
   .ciyg {
-    padding-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 20px;
   }
   .new_cars {
     width: 100%;
   }
 
+}
+@media (min-width: 1200px) {
+  .name h4 {
+    font-size: 20px;
+  }
 }

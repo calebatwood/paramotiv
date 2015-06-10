@@ -116,11 +116,22 @@ $(document).ready(function(){
   $('#garage').on('click', '.nearest', function(){
     if ($(this).hasClass('dealer')) {
       $(this).removeClass('dealer');
+      $('#garage .btn').css('background-color', 'transparent');
+      $('garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
       $('.service_schedule').remove();
       $('.recall_list').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     } else {
+      $('#garage .btn').css('background-color', 'transparent');
+      $('garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-danger').css('color', '#d43f3a');
+      $(this).css('background-color', '#4cae4c');
+      $(this).css('color', 'rgba(0, 0, 0, 0.5)');
       $(this).addClass('dealer');
       $(this).closest('.row').append('<div class="col-xs-12 close_dealers"></div>');
       var zip = $('.dealer').attr('data');
@@ -158,6 +169,11 @@ $(document).ready(function(){
   $('#garage').on('click', '.btn-danger', function(){
     if ($('.btn-danger').hasClass('trade')){
       $(this).removeClass('trade');
+      $('#garage .btn').css('background-color', 'transparent');
+      $('garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
       $('.tmv').remove();
       $('.service_schedule').remove();
       $('.recall_list').remove();
@@ -165,6 +181,12 @@ $(document).ready(function(){
       $('.close_dealers').remove();
 
     } else {
+      $('#garage .btn').css('background-color', 'transparent');
+      $('garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $(this).css('background-color', '#d43f3a');
+      $(this).css('color', 'rgba(0, 0, 0, 0.5)');
       $(this).addClass('trade');
       $(this).closest('.row').append('<div class="col-md-4 col-md-offset-8 col-xs-12 trade_in_values"></div>');
       var mileage = $('.trade').data('mileage');
@@ -202,11 +224,22 @@ $(document).ready(function(){
   $('#garage').on('click', '.btn-primary', function(){
     if ($(this).hasClass('maintenance')){
       $(this).removeClass('maintenance');
+      $('#garage .btn').css('background-color', 'transparent');
+      $('#garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
       $('.service_schedule').remove();
       $('.recall_list').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     } else {
+      $('#garage .btn').css('background-color', 'transparent');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
+      $(this).css('background-color', '#eacb00');
+      $(this).css('color', 'rgba(0, 0, 0, 0.5)');
       $(this).addClass('maintenance');
       $(this).closest('.row').append('<div class="col-xs-12 service_schedule"></div>');
       var model_year_id = $('.maintenance').attr('value');
@@ -292,11 +325,22 @@ $(document).ready(function(){
   $('#garage').on('click', '.find_recalls', function(){
     if ($(this).hasClass('recall')) {
       $(this).removeClass('recall');
+      $('#garage .btn').css('background-color', 'transparent');
+      $('garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-primary.find_recalls').css('color', '#2e6da4');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
       $('.recall_list').remove();
       $('.service_schedule').remove();
       $('.close_dealers').remove();
       $('.trade_in_values').remove();
     } else {
+      $('#garage .btn').css('background-color', 'transparent');
+      $('#garage .btn-primary.intervals').css('color', '#eacb00');
+      $('#garage .btn-success').css('color', '#4cae4c');
+      $('#garage .btn-danger').css('color', '#d43f3a');
+      $(this).css('background-color', '#2e6da4');
+      $(this).css('color', 'rgba(0, 0, 0, 0.5)');
       $(this).addClass('recall');
       $(this).closest('.row').append('<div class="col-xs-12 recall_list"></div>');
       var model_year_id = $('.recall').attr('value');
@@ -332,6 +376,8 @@ $(document).ready(function(){
   $('.new_car').css('height', '0px');
 
   $('.new_cars').on('click', function(){
+    $('.btn-info').css('background-color', '#46b8da');
+    $('.btn-info').css('color', 'rgba(0, 0, 0, 0.5)');
     if($('.new_car').css('visibility', 'hidden')){
       $('.new_car').css('visibility', 'visible');
       $('.new_car').css('height', '100%');
@@ -339,6 +385,8 @@ $(document).ready(function(){
   });
 
   $('.cancel_new_car').on('click', function(){
+    $('.btn-info').css('background-color', 'transparent');
+    $('.btn-info').css('color', '#46b8da');
     $('.new_car').css('visibility', 'hidden');
     $('.new_car').css('height', '0px');
     $('#car_make').val('');
@@ -355,6 +403,8 @@ $(document).ready(function(){
   //add car to garage
   $('.add_car').on('click', function(e){
     e.preventDefault();
+    $('.btn-info').css('background-color', 'transparent');
+    $('.btn-info').css('color', '#46b8da');
     var user = $('#my_garage').data('user_id');
     var make = $('#car_make').val();
     var model = $('#car_model').val();
