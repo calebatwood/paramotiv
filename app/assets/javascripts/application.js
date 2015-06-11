@@ -65,6 +65,11 @@ $(document).ready(function(){
       var modelArray = data.models;
       console.log(data.models);
       $('#car_model').empty();
+      $('#car_model').append('<option value="Select vehicle model...">Select vehicle model...</option>');
+      $('#car_year').empty();
+      $('#car_year').append('<option value="Select vehicle year...">Select vehicle year...</option>');
+      $('#car_style').empty();
+      $('#car_style').append('<option value="Select vehicle style...">Select vehicle style...</option>');
       $.each(modelArray, function(index, value) {
         $('#car_model').append('<option value="' + value.niceName + '">' + value.name + '</option>');
       });
@@ -79,7 +84,8 @@ $(document).ready(function(){
   function retrieve_years(make, model) {
     $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/years?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       var yearArray = data.years;
-      $('car_year').empty();
+      $('#car_year').empty();
+      $('#car_year').append('<option value="Select vehicle year...">Select vehicle year...</option>');
       $.each(yearArray, function(index, value) {
         $('#car_year').append('<option value="' + value.year + '">' + value.year + '</option>');
       });
@@ -96,7 +102,8 @@ $(document).ready(function(){
     $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/'+year+'/styles?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       var styleArray = data.styles;
       console.log(data.styles);
-      $('car_style').empty();
+      $('#car_style').empty();
+      $('#car_style').append('<option value="Select vehicle style...">Select vehicle style...</option>');
       $.each(styleArray, function(index, value) {
         $('#car_style').append($('<option>', {value: value.name, id: value.id, text: value.name}));
           console.log(value.year);
@@ -154,6 +161,7 @@ $(document).ready(function(){
       var fri = (data.dealers[0].operations.Friday);
       var sat = (data.dealers[0].operations.Saturday);
       var sund = (data.dealers[0].operations.Sunday);
+
 
         $('.close_dealers').append('<div class="dealership"><div class="col-xs-12 col-md-4 col-md-offset-4"><h3>'+name+'</h3><br><h4>'+street+'</h4><h4>'+city+', '+state+' '+zip+'</h4><h4>Phone: '+phone+'</h4><br></div><div class="col-xs-12 col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:  '+mon+'</p><p>Tuesday:  '+tue+'</p><p>Wednesday:  '+wed+'</p><p>Thursday:  '+thur+'</p><p>Friday:  '+fri+'</p><p>Saturday:  '+sat+'</p><p>Sunday:  '+sund+'</p></div></div>');
 
