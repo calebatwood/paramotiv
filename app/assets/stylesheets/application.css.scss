@@ -161,7 +161,7 @@ nav ul li a {
 }
 
 
-@media (max-width: 4000px) {
+@media (max-width: 6000px) {
   .title p {
     width: 80%;
     margin-left: 10%;
@@ -262,6 +262,9 @@ nav ul li a {
   }
   .new_cars {
     width: 100%;
+  }
+  .tmv h3 {
+    font-size: 28px;
   }
 
 }

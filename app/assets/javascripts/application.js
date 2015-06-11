@@ -211,7 +211,7 @@ $(document).ready(function(){
       var retail = (data.tmv.totalWithOptions.usedTmvRetail);
       var trade_in = (data.tmv.totalWithOptions.usedTradeIn);
       $('.tmv').remove();
-      $('.trade_in_values').append('<div class="tmv"><h3>Private Sale: $'+private_party+'</h3><h3>Trade In: $'+trade_in+'</h3><h3>Retail: $'+retail+'</h3></div>');
+      $('.trade_in_values').append('<div class="tmv"><h3>// Retail: $'+retail+'</h3><h3>// Private Sale: $'+private_party+'</h3><h3>// Trade In: $'+trade_in+'</h3></div>');
     });
   }
 
