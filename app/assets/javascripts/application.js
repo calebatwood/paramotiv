@@ -345,7 +345,7 @@ $(document).ready(function(){
           var affected = value.numberOfVehiclesAffected;
           var date = value.ownerNotificationDate;
           console.log(comp);
-          $('.recall_list').append('<div class="col-xs-12 col-md-4 recall_info"><h5>COMPONENT / '+comp+'</h5><h5>'+desc+'</h5><h5>'+conseq+'</h5><h5>'+action+'</h5><h5>'+affected+' VEHICLES AFFECTED</h5><h5>DATE OF RECALL / '+date+'</h5></div>');
+          $('.recall_list').append('<div class="col-xs-12 col-md-4 recall_info"><h5>'+comp+'</h5><br><h5>'+desc+'</h5><br><h5>'+conseq+'</h5><br><h5>'+action+'</h5><br><h5>'+affected+' VEHICLES AFFECTED</h5><br><h5>DATE OF RECALL: '+date+'</h5></div>');
         });
       }
     });
@@ -375,7 +375,6 @@ $(document).ready(function(){
     $('#car_model').val('Select vehicle model...');
     $('#car_year').val('Select vehicle year...');
     $('#car_style').val('Select vehicle style...');
-    $('#car_mileage').val('Enter vehicle mileage...');
     $('#car_style_id').val('');
     $('#car_model_year_id').val('');
 
@@ -403,7 +402,7 @@ $(document).ready(function(){
       $('#car_model').val('Select vehicle model...');
       $('#car_year').val('Select vehicle year...');
       $('#car_style').val('Select vehicle style...');
-      $('#car_mileage').val('Enter vehicle mileage...');
+      $('#car_mileage').val('');
       $('#car_style_id').val('');
       $('#car_model_year_id').val('');
     });
