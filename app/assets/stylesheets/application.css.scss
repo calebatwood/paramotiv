@@ -94,10 +94,10 @@ nav ul li a {
   padding: 20px;
 }
 .ciyg {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .car_params {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .name h4 {
@@ -210,11 +210,11 @@ nav ul li a {
   .cancel_new_car {
     float: left;
     margin-left: 60px;
-    margin-top: -10px;
+    margin-top: 20px;
   }
   .add_car {
     float: left;
-    margin-top: -10px;
+    margin-top: 20px;
   }
   .vehicle {
     padding-bottom: 20px;
@@ -249,6 +249,12 @@ nav ul li a {
     padding-top: 10px;
     padding-bottom: 20px;
   }
+  .ciyg h2 {
+    font-size: 40px;
+  }
+  .ciyg h4 {
+    font-size: 20px;
+  }
   .car_params {
     padding-bottom: 30px;
   }
@@ -259,6 +265,6 @@ nav ul li a {
 }
 @media (min-width: 1300px) {
   .name h4 {
-    font-size: 20px;
+    font-size: 35px;
   }
 }
