@@ -84,11 +84,10 @@ nav ul li a {
 }
 .description {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 .description p {
-  font-size: 1.7em;
   width: 80%;
   margin: auto;
   padding: 20px;
@@ -165,13 +164,17 @@ nav ul li a {
 
 @media (max-width: 4000px) {
   .title p {
-    font-size: 120px;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .title p img {
+    width: 80%;
   }
   .description {
     margin-top: 100px;
   }
   .description p {
-    font-size: 16px;
+    font-size: 18px;
     width: 90%;
   }
   .name h4 {
