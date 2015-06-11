@@ -22,44 +22,44 @@
         the Trade In feature allows you to find the retail, private party, and trade in values.</h4>
         <h2><a class='btn btn-info new_cars'>Add Car to Garage</a></h2>
       </div>
-      <div class='col-xs-12 col-md-6'></div>
+      <div class='col-xs-12 col-md-6 new_car'>
+          <%= form_for (@car), remote: true do |f| %>
+            <div class='row initialize'>
+              <div class='col-xs-6'>
+                <br>
+                <%= f.select :make, ['Select vehicle make...'], {}, {class: 'form-control'} %>
+              </div>
+              <div class='col-xs-6'>
+                <br>
+                <%= f.select :model, ['Select vehicle model...'], {}, {class: 'form-control'} %>
+              </div>
+              <div class='col-xs-6'>
+                <br>
+                <%= f.select :year, ['Select vehicle year...'], {}, {class: 'form-control'} %>
+              </div>
+              <div class='col-xs-6'>
+                <br>
+                <%= f.select :style, ['Select vehicle style...'], {}, {class: 'form-control'} %>
+              </div>
+              <div class='col-xs-6'>
+                <br>
+                <%= f.text_field :mileage, {class: 'form-control', autofocus: true, placeholder: 'Enter vehicle mileage...'} %>
+                <%= f.hidden_field :style_id  %>
+                <%= f.hidden_field :model_year_id %>
+              </div>
+              <div class='col-xs-12'>
+                <br>
+                <br>
+                <%= f.submit 'Add to Garage', class: 'btn btn-success add_car' %><a class='btn btn-success cancel_new_car'>Cancel</a>
+              </div>
+            </div>
+          <% end %>
+      </div>
     </div>
       <br>
       <br>
 
-        <div class='col-xs-12 new_car'>
-            <%= form_for (@car), remote: true do |f| %>
-              <div class='row initialize'>
-                <div class='col-xs-6 col-md-4'>
-                  <br>
-                  <%= f.select :make, ['Select vehicle make...'], {}, {class: 'form-control'} %>
-                </div>
-                <div class='col-xs-6 col-md-4'>
-                  <br>
-                  <%= f.select :model, ['Select vehicle model...'], {}, {class: 'form-control'} %>
-                </div>
-                <div class='col-xs-6 col-md-4'>
-                  <br>
-                  <%= f.select :year, ['Select vehicle year...'], {}, {class: 'form-control'} %>
-                </div>
-                <div class='col-xs-6 col-md-4'>
-                  <br>
-                  <%= f.select :style, ['Select vehicle style...'], {}, {class: 'form-control'} %>
-                </div>
-                <div class='col-md-4'>
-                  <br>
-                  <%= f.text_field :mileage, {class: 'form-control', autofocus: true, placeholder: 'Enter vehicle mileage...'} %>
-                  <%= f.hidden_field :style_id  %>
-                  <%= f.hidden_field :model_year_id %>
-                </div>
-                <div class='col-md-4'>
-                  <br>
-                  <br>
-                  <%= f.submit 'Add to Garage', class: 'btn btn-success add_car' %><a class='btn btn-success cancel_new_car'>Cancel</a>
-                </div>
-              </div>
-            <% end %>
-        </div>
+
 
       <div class='row' id='garage'>
         <% @cars.each do |car| %>

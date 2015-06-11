@@ -129,8 +129,8 @@ $(document).ready(function(){
       $(this).addClass('dealer');
       $('#garage .close_dealers').remove();
       $(this).closest('.row').append('<div class="col-xs-12 close_dealers"></div>');
-      var zip = $('.dealer').attr('data');
-      var make = $('.dealer').attr('value');
+      var zip = $(this).closest('.dealer').attr('data');
+      var make = $(this).closest('.dealer').attr('value');
       nearest_dealer(zip, make);
       $('.service_schedule').remove();
       $('.recall_list').remove();
@@ -219,6 +219,7 @@ $(document).ready(function(){
     } else {
       // $('#garage .btn').css('background-color', '#b1ffe0');
       // $(this).css('background-color', 'rgba(214, 255, 224, 0.6)');
+      $('#garage .btn-primary').removeClass('maintenance');
       $(this).addClass('maintenance');
       $('#garage .service_schedule').remove();
       $(this).closest('.row').append('<div class="col-xs-12 service_schedule"></div>');
@@ -315,7 +316,7 @@ $(document).ready(function(){
       // $(this).css('background-color', 'rgba(214, 255, 224, 0.6)');
       $(this).addClass('recall');
       $(this).closest('.row').append('<div class="col-xs-12 recall_list"></div>');
-      var model_year_id = $('.recall').attr('value');
+      var model_year_id = $(this).closest('.recall').attr('value');
       retrieve_recalls(model_year_id);
       $('.service_schedule').remove();
       $('.close_dealers').remove();
@@ -362,12 +363,11 @@ $(document).ready(function(){
     $('.btn-info').css('color', 'rgba(0, 0, 0, 0.5)');
     $('.new_car').css('visibility', 'hidden');
     $('.new_car').css('height', '0px');
-    $('#car_make').val('');
-    $('#car_model').val('');
-    $('#car_year').val('');
-    $('#car_style').val('');
-    $('#car_zip').val('');
-    $('#car_mileage').val('');
+    $('#car_make').val('Select vehicle make...');
+    $('#car_model').val('Select vehicle model...');
+    $('#car_year').val('Select vehicle year...');
+    $('#car_style').val('Select vehicle style...');
+    $('#car_mileage').val('Enter vehicle mileage...');
     $('#car_style_id').val('');
     $('#car_model_year_id').val('');
 
