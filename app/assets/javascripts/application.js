@@ -345,15 +345,15 @@ $(document).ready(function(){
 
   }
   //new car form
-  $('.new_car').css('visibility', 'hidden');
-  $('.new_car').css('height', '0px');
+  $('.car_params').css('visibility', 'hidden');
+  $('.car_params').css('height', '0px');
 
   $('.new_cars').on('click', function(){
     $('.btn-info').css('background-color', 'rgba(214, 255, 224, 0.6)');
     $('.btn-info').css('color', 'rgba(0, 0, 0, 0.5)');
-    if($('.new_car').css('visibility', 'hidden')){
-      $('.new_car').css('visibility', 'visible');
-      $('.new_car').css('height', '100%');
+    if($('.car_params').css('visibility', 'hidden')){
+      $('.car_params').css('visibility', 'visible');
+      $('.car_params').css('height', '100%');
     }
   });
 
@@ -361,8 +361,8 @@ $(document).ready(function(){
 
     $('.btn-info').css('background-color', '#b1ffe0');
     $('.btn-info').css('color', 'rgba(0, 0, 0, 0.5)');
-    $('.new_car').css('visibility', 'hidden');
-    $('.new_car').css('height', '0px');
+    $('.car_params').css('visibility', 'hidden');
+    $('.car_params').css('height', '0px');
     $('#car_make').val('Select vehicle make...');
     $('#car_model').val('Select vehicle model...');
     $('#car_year').val('Select vehicle year...');
@@ -389,8 +389,8 @@ $(document).ready(function(){
     var model_year_id = $('#car_model_year_id').val();
     $.post('cars', { car: { make: make, model: model, year: year, style: style, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
       $('#garage').prepend(res);
-      $('.new_car').css('visibility', 'hidden');
-      $('.new_car').css('height', '0px');
+      $('.car_params').css('visibility', 'hidden');
+      $('.car_params').css('height', '0px');
       $('#car_make').val('Select vehicle make...');
       $('#car_model').val('Select vehicle model...');
       $('#car_year').val('Select vehicle year...');
