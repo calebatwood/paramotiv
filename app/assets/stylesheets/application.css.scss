@@ -3,8 +3,13 @@
 
 body {
   background-image: image-url("/back2.jpg");
-  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: 30% center;
   background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
 }
