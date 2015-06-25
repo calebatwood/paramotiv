@@ -2,7 +2,7 @@
   <div class='col-xs-10  name'><h4>// <%= car.year %> <%= car.make.capitalize %> <%= car.model.capitalize %> // <em><%= car.mileage %> miles</em></h4></div>
   <div class='col-xs-6'><a class='btn btn-primary find_recalls' value="<%= car.model_year_id %>">Recalls</a></div>
   <div class='col-xs-6'><a class='btn btn-primary intervals' value="<%= car.model_year_id %>" data-mileage="<%= car.mileage %>">Maintenance</a></div>
-  <div class='col-xs-6'><a class='btn btn-success nearest' value="<%= car.make %>" data="80211">Nearest Dealer</a></div>
-  <div class='col-xs-6'><a class='btn btn-danger' value="<%= car.style_id %>" data-zip="80211" data-mileage="<%= car.mileage %>">Trade Value</a></div>
+  <div class='col-xs-6'><a class='btn btn-success nearest' value="<%= car.make %>" data="<%= car.zip %>">Nearest Dealer</a></div>
+  <div class='col-xs-6'><a class='btn btn-danger' value="<%= car.style_id %>" data-zip="<%= car.zip %>" data-mileage="<%= car.mileage %>">Trade Value</a></div>
   <div class='col-xs-6'><a class='btn btn-warning'>Remove</a></div>
 </div>

@@ -22,15 +22,16 @@
 </nav>
 <body>
 
-
+  <div class='wrapper'>
       <%= yield %>
-
-</body>
-<footer>
-  <div class='row'>
-  <div class='cr'>© 2015 Caleb Atwood </div>
-  <div class='github'><%= link_to('https://github.com/calebatwood', target: '_blank') do %><%= image_tag('octo.png', height: 32) %><% end %></div>
-  <div class='linked'><%= link_to('https://linkedin.com/in/calebatwood', target: '_blank') do %><%= image_tag('linked.png', height: 40) %><% end %></div>
+      <footer>
+        <div class='row'>
+        <div class='cr'>© 2015 Caleb Atwood </div>
+        <div class='github'><%= link_to('https://github.com/calebatwood', target: '_blank') do %><%= image_tag('octo.png', height: 32) %><% end %></div>
+        <div class='linked'><%= link_to('https://linkedin.com/in/calebatwood', target: '_blank') do %><%= image_tag('linked.png', height: 40) %><% end %></div>
+        </div>
+      </footer>
   </div>
-</footer>
+</body>
+
 </html>

@@ -146,14 +146,15 @@ $(document).ready(function(){
   });
 
   function nearest_dealer(zip, make) {
-    $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=30&make='+make+'&state=new&pageNum=1&pageSize=3&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+    $.get('https://api.edmunds.com/api/dealer/v2/dealers/?zipcode='+zip+'&radius=100&make='+make+'&state=new&pageNum=1&pageSize=3&sortby=distance%3AASC&view=basic&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
+      console.log(data.dealers[0]);
       var name = (data.dealers[0].name);
       var street = (data.dealers[0].address.street);
       var city = (data.dealers[0].address.city);
       var state = (data.dealers[0].address.stateCode);
       var zip = (data.dealers[0].address.zipcode);
-      var phone = (data.dealers[0].contactInfo.phone);
-      var site = (data.dealers[0].contactInfo.website);
+      // var phone = (data.dealers[0].contactInfo.phone);
+      // var site = (data.dealers[0].contactInfo.website);
       var mon = (data.dealers[0].operations.Monday);
       var tue = (data.dealers[0].operations.Tuesday);
       var wed = (data.dealers[0].operations.Wednesday);
@@ -163,7 +164,7 @@ $(document).ready(function(){
       var sund = (data.dealers[0].operations.Sunday);
 
 
-        $('.close_dealers').append('<div class="dealership"><div class="col-xs-12 col-md-4 col-md-offset-4"><h3>'+name+'</h3><br><h4>'+street+'</h4><h4>'+city+', '+state+' '+zip+'</h4><h4>Phone: '+phone+'</h4><br></div><div class="col-xs-12 col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:  '+mon+'</p><p>Tuesday:  '+tue+'</p><p>Wednesday:  '+wed+'</p><p>Thursday:  '+thur+'</p><p>Friday:  '+fri+'</p><p>Saturday:  '+sat+'</p><p>Sunday:  '+sund+'</p></div></div>');
+        $('.close_dealers').append('<div class="dealership"><div class="col-xs-12 col-md-4 col-md-offset-4"><h3>'+name+'</h3><br><h4>'+street+'</h4><h4>'+city+', '+state+' '+zip+'</h4><br></div><div class="col-xs-12 col-md-4"><h4><em>Hours of operation<em></h4><p>Monday:  '+mon+'</p><p>Tuesday:  '+tue+'</p><p>Wednesday:  '+wed+'</p><p>Thursday:  '+thur+'</p><p>Friday:  '+fri+'</p><p>Saturday:  '+sat+'</p><p>Sunday:  '+sund+'</p></div></div>');
 
     });
   }
@@ -394,7 +395,7 @@ $(document).ready(function(){
     var mileage = $('#car_mileage').val();
     var style_id = $('#car_style_id').val();
     var model_year_id = $('#car_model_year_id').val();
-    $.post('cars', { car: { make: make, model: model, year: year, style: style, mileage: mileage, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
+    $.post('cars', { car: { make: make, model: model, year: year, style: style, mileage: mileage, zip: zip, style_id: style_id, model_year_id: model_year_id } } ).done(function(res){
       $('#garage').prepend(res);
       $('.car_params').css('visibility', 'hidden');
       $('.car_params').css('height', '0px');
@@ -403,6 +404,7 @@ $(document).ready(function(){
       $('#car_year').val('Select vehicle year...');
       $('#car_style').val('Select vehicle style...');
       $('#car_mileage').val('');
+      $('#car_zip').val('');
       $('#car_style_id').val('');
       $('#car_model_year_id').val('');
     });
