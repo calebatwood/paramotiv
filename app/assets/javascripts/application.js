@@ -10,7 +10,7 @@ $(document).ready(function(){
   $('nav').hide();
 
   //show home
-  $('.h').on('click', function(){
+  $('.smLogo').on('click', function(){
     $('#welcome').show();
     $('nav').hide();
     $('#my_garage').hide();
@@ -65,11 +65,11 @@ $(document).ready(function(){
       var modelArray = data.models;
       console.log(data.models);
       $('#car_model').empty();
-      $('#car_model').append('<option value="Select vehicle model...">Select vehicle model...</option>');
+      $('#car_model').append('<option value="Select model...">Select model...</option>');
       $('#car_year').empty();
-      $('#car_year').append('<option value="Select vehicle year...">Select vehicle year...</option>');
+      $('#car_year').append('<option value="Select year...">Select year...</option>');
       $('#car_style').empty();
-      $('#car_style').append('<option value="Select vehicle style...">Select vehicle style...</option>');
+      $('#car_style').append('<option value="Select style...">Select style...</option>');
       $.each(modelArray, function(index, value) {
         $('#car_model').append('<option value="' + value.niceName + '">' + value.name + '</option>');
       });
@@ -85,7 +85,7 @@ $(document).ready(function(){
     $.get('https://api.edmunds.com/api/vehicle/v2/:'+make+'/:'+model+'/years?fmt=json&api_key=scgz9esm95u72e7rh8mv5kyz', function(data) {
       var yearArray = data.years;
       $('#car_year').empty();
-      $('#car_year').append('<option value="Select vehicle year...">Select vehicle year...</option>');
+      $('#car_year').append('<option value="Select year...">Select year...</option>');
       $.each(yearArray, function(index, value) {
         $('#car_year').append('<option value="' + value.year + '">' + value.year + '</option>');
       });
@@ -103,7 +103,7 @@ $(document).ready(function(){
       var styleArray = data.styles;
       console.log(data.styles);
       $('#car_style').empty();
-      $('#car_style').append('<option value="Select vehicle style...">Select vehicle style...</option>');
+      $('#car_style').append('<option value="Select style...">Select style...</option>');
       $.each(styleArray, function(index, value) {
         $('#car_style').append($('<option>', {value: value.name, id: value.id, text: value.name}));
           console.log(value.year);
@@ -184,7 +184,7 @@ $(document).ready(function(){
       // $('#garage .btn').css('background-color', '#b1ffe0');
       // $(this).css('background-color', 'rgba(214, 255, 224, 0.6)');
       $(this).addClass('trade');
-      $(this).closest('.row').append('<div class="col-md-4 col-md-offset-8 col-xs-12 trade_in_values"></div>');
+      $(this).closest('.row').append('<div class="col-md-4 col-md-offset-7 col-xs-12 trade_in_values"></div>');
       var mileage = $('.trade').data('mileage');
       $('.trade_in_values').append('<div class="trade_form"><h6>Condition</h6><select class="form-control condition"><option disabled selected>Select Condition</option><option>Outstanding</option><option>Clean</option><option>Average</option><option>Rough</option><option>Damaged</option></select><h6>Mileage</h6><input type="text" class="form-control mileage" value="'+mileage+'"><div class="btn btn-default">Calculate True Market Value</div></div>');
       $('.trade_in_values').css('visibility', 'visible');
@@ -372,10 +372,10 @@ $(document).ready(function(){
     $('.btn-info').css('color', 'rgba(0, 0, 0, 0.5)');
     $('.car_params').css('visibility', 'hidden');
     $('.car_params').css('height', '0px');
-    $('#car_make').val('Select vehicle make...');
-    $('#car_model').val('Select vehicle model...');
-    $('#car_year').val('Select vehicle year...');
-    $('#car_style').val('Select vehicle style...');
+    $('#car_make').val('Select make...');
+    $('#car_model').val('Select model...');
+    $('#car_year').val('Select year...');
+    $('#car_style').val('Select style...');
     $('#car_style_id').val('');
     $('#car_model_year_id').val('');
 
@@ -399,10 +399,10 @@ $(document).ready(function(){
       $('#garage').prepend(res);
       $('.car_params').css('visibility', 'hidden');
       $('.car_params').css('height', '0px');
-      $('#car_make').val('Select vehicle make...');
-      $('#car_model').val('Select vehicle model...');
-      $('#car_year').val('Select vehicle year...');
-      $('#car_style').val('Select vehicle style...');
+      $('#car_make').val('Select make...');
+      $('#car_model').val('Select model...');
+      $('#car_year').val('Select year...');
+      $('#car_style').val('Select style...');
       $('#car_mileage').val('');
       $('#car_zip').val('');
       $('#car_style_id').val('');

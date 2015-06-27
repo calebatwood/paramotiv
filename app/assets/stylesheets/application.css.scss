@@ -1,8 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+//All pages
 
+html {
+  min-height: 100%;
+}
 body {
-  background-image: image-url("/back2.jpg");
+  width: 100%;
+  min-height: 100%;
+  background-image: image-url('/back2.jpg');
   background-repeat: no-repeat;
   background-position: 30% center;
   background-attachment: fixed;
@@ -12,130 +18,142 @@ body {
   background-size: cover;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
-}
-.row.info {
-  margin-top: 200px;
-}
-footer {
-  background-color: rgba(0, 0, 0, 0.9);
-
-}
-.cr {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-left: 50px;
-  float: left;
-  font-size: 18px;
-}
-.github {
-  margin-top: 18px;
-  margin-left: 50px;
-  float: left;
-}
-.linked {
-  margin-top: 14px;
-  margin-left: 50px;
-  float: left;
+  margin-left: 0px;
 }
 nav {
   background-color: rgba(0, 0, 0, 0.9);
   text-align: center;
-
   z-index: 100;
+  top: 0;
   position: fixed;
   width: 100%;
-  }
-nav ul {
-   margin: 0;
-   padding: 0;
-   list-style: none;
-   display: inline-block;
 }
-nav ul li {
-  float: left;
-  padding: 17px 15px 12px 15px;
-  display: block;
+nav img {
+  padding: 10px;
 }
-nav ul li a {
-   font-size: 18px;
-   color: #fff;
-   text-decoration:none;
-}
-.h {
-  cursor: pointer;
-}
-
-.wrapper img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.title {
-  margin: auto;
-  padding-top: 50px;
-  padding-bottom: 280px;
-}
-.title p {
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-  font-size: 9em;
-  height: auto;
-  cursor: pointer;
-}
-.title a {
-  text-decoration: none;
-}
-.description {
+footer {
+  background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  text-align: center;
+  bottom: 0;
+  position: fixed;
 }
-.description p {
-  width: 80%;
+footer h4 {
+  padding: 10px;
+  margin: 0px;
+}
+
+//Landing Page
+
+.title img {
   margin: auto;
-  padding: 20px;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
+  cursor: pointer;
 }
+// .description {
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.6);
+//   text-align: center;
+//   bottom: 100;
+// }
+// .description p {
+//   width: 80%;
+//   margin: auto;
+//   font-size: 0.8em;
+// }
+
+//Garage
+
+//Buttons
+.btn {
+  background-color: #b1ffe0;
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 11px;
+  border: solid 2px;
+  border-color: #b1ffe0;
+}
+.btn:hover {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(214, 255, 224, 0.6);
+  border-color: #b1ffe0;
+}
+
+
+#my_garage {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#my_garage .container {
+  width: 80%;
+  margin-left: 10%;
+}
+//Welcome box (cars in your garage)
 .ciyg {
   background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
+.new_cars {
+  width: 100%;
+}
+.new_cars:hover {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(214, 255, 224, 0.6);
+  border-color: #b1ffe0;
+}
+//New car form
 .car_params {
   background-color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 30px;
 }
-
-.name h4 {
-  margin-top: 3px;
-}
-
-.well {
-  background-color: #000;
-  border-color: #000;
-}
-
-.condition {
-  width: 80%;
-}
-.mileage {
-  width: 80%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#garage {
-  min-width: 100%;
-}
-
-
 .initialize p {
   color: #fff;
   padding-top: 5px;
 }
+.add_car {
+  float: left;
+  margin-top: 20px;
+
+}
+.cancel_new_car {
+  float: left;
+  margin-top: 20px;
+
+}
 
 
+//Individual vehicle rows
+.vehicle {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top: 25px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.name h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.8em;
 
-//user show page
-
-
+}
+#garage .col-xs-6 {
+  margin-bottom: 5px;
+}
+.recall_info {
+  margin-top: 15px;
+  border: solid 2px;
+  border-color: rgba(255, 255, 255, 0.9);
+  height: 300px;
+  overflow: scroll;
+}
+.service_schedule {
+  margin-top: 15px;
+  content-align: center;
+}
 .main {
   height: 300px;
   overflow: scroll;
@@ -143,138 +161,14 @@ nav ul li a {
   border-color: rgba(255, 255, 255, 0.9);
 
 }
-
-.vehicle {
-  padding-bottom: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
+.closest_dealers {
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .trade_in_values {
-  margin-top: 20px;
-  content-align: left;
-}
-.service_schedule {
-  margin-top: 20px;
-}
-.closest_dealers {
-  margin-top: 20px;
-}
-.recall_info {
-  border: solid 2px;
-  border-color: rgba(255, 255, 255, 0.9);
-  height: 300px;
-  overflow: scroll;
-}
-
-
-@media (max-width: 6000px) {
-  .title p {
-    width: 80%;
-    margin-left: 10%;
-  }
-  .title p img {
-    width: 80%;
-  }
-  .description {
-    margin-top: 220px;
-  }
-  .description p {
-    font-size: 18px;
-    width: 90%;
-  }
-  .name h4 {
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    margin-top: 20px;
-    text-align: center;
-  }
-  .col-xs-6 {
-    margin-bottom: 5px;
-  }
-  .col-xs-6 a {
-    width: 100%;
-    min-height: 40px;
-    font-size: 20px;
-    padding-top: 10px;
-  }
-  .btn {
-    background-color: #b1ffe0;
-    height: 50px;
-    width: 150px;
-    font-size: 18px;
-    color: rgba(0, 0, 0, 0.5);
-    padding-top: 11px;
-    border: solid 2px;
-    border-color: #b1ffe0;
-  }
-  .btn:hover {
-    color: rgba(0, 0, 0, 0.5);
-    background-color: rgba(214, 255, 224, 0.6);
-    border-color: #b1ffe0;
-  }
-  .btn-default {
-    width: 260px;
-  }
-  .cancel_new_car {
-    float: left;
-    margin-left: 60px;
-    margin-top: 20px;
-  }
-  .add_car {
-    float: left;
-    margin-top: 20px;
-  }
-  .vehicle {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    margin-top: 25px;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  .trade_in_values {
-    margin-top: 15px;
-    margin-left: 15px;
-  }
-  .service_schedule {
-    margin-top: 15px;
-    margin-left: 15px;
-    content-align: center;
-  }
-  .main {
-    max-height: 200px;
-    max-width: 95%;
-  }
-  .closest_dealers {
-    margin-top: 15px;
-    margin-left: 15px;
-  }
-  .container {
-    width: 80%;
-  }
-  h2 {
-    padding-top: 0px;
-  }
-  .ciyg {
-    padding-top: 10px;
-    padding-bottom: 20px;
-  }
-  .ciyg h2 {
-    font-size: 40px;
-  }
-  .ciyg h4 {
-    font-size: 20px;
-  }
-  .car_params {
-    padding-bottom: 30px;
-  }
-  .new_cars {
-    width: 100%;
-  }
-  .tmv h3 {
-    font-size: 28px;
-  }
+  margin-top: 15px;
 
 }
-@media (min-width: 1300px) {
-  .name h4 {
-    font-size: 35px;
-  }
+.btn-default {
+  margin-top: 20px;
 }

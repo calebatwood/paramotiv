@@ -1,12 +1,6 @@
 <div id='welcome'>
   <div class='title'>
-    <p><%= image_tag('paramotiv_mint_white.png') %></p>
-  </div>
-  <div class='description'>
-      <p>A tool that utilizes the EDMUNDS.com API to let you build a garage of your vehicles.
-      Browse upcoming service intervals, or find if there are any current recalls of your car. Locate and
-      contact your nearest dealership, and figure out what your current car is worth when it's time for
-      your next one.</p>
+    <%= image_tag('paramotiv_mint_white.png') %>
   </div>
 </div>
 
@@ -34,27 +28,27 @@
             <div class='row initialize'>
               <div class='col-xs-6'>
                 <br>
-                <%= f.select :make, ['Select vehicle make...'], {}, {class: 'form-control'} %>
+                <%= f.select :make, ['Select make...'], {}, {class: 'form-control'} %>
               </div>
               <div class='col-xs-6'>
                 <br>
-                <%= f.select :model, ['Select vehicle model...'], {}, {class: 'form-control'} %>
+                <%= f.select :model, ['Select model...'], {}, {class: 'form-control'} %>
               </div>
               <div class='col-xs-6'>
                 <br>
-                <%= f.select :year, ['Select vehicle year...'], {}, {class: 'form-control'} %>
+                <%= f.select :year, ['Select year...'], {}, {class: 'form-control'} %>
               </div>
               <div class='col-xs-6'>
                 <br>
-                <%= f.select :style, ['Select vehicle style...'], {}, {class: 'form-control'} %>
+                <%= f.select :style, ['Select style...'], {}, {class: 'form-control'} %>
               </div>
               <div class='col-xs-6'>
                 <br>
-                <%= f.text_field :mileage, {class: 'form-control', autofocus: true, placeholder: 'Enter vehicle mileage...'} %>
+                <%= f.text_field :mileage, {class: 'form-control', autofocus: true, placeholder: 'Mileage...'} %>
               </div>
               <div class='col-xs-6'>
                 <br>
-                <%= f.text_field :zip, {class: 'form-control', autofocus: true, placeholder: 'Enter vehicle zip code...'} %>
+                <%= f.text_field :zip, {class: 'form-control', autofocus: true, placeholder: 'Zip code...'} %>
                 <%= f.hidden_field :style_id  %>
                 <%= f.hidden_field :model_year_id %>
               </div>
